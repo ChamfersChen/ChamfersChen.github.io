@@ -258,6 +258,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/Little-Rabbis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chamfers' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/05/Little-Rabbis/" itemprop="url">Little Rabbis</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-05T16:48:50+08:00">
+                2020-07-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><label style="color:red">所谓小垃圾</label>，可分为干小垃圾、湿小垃圾和有害小垃圾，而你是我的小垃圾！</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/SVM-arithmatic-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -341,8 +461,11 @@
 <p>3、一个训练集线性可分是指：${(x_i,y_i)}_{i=1…N},\exists (\omega,b)$使得对$\forall i=1…N$有</p>
 <center>a、若$y_i=+1$则$\omega ^Tx_i+b>=0$</center><center>b、若$y_i=-1$则$\omega ^Tx_i+b<0$</center><center>$\Rightarrow y_i[\omega^Tx_i+b]>=0$</center>
 
-<h3 id="优化问题：（凸优化问题，二次规划问题）"><a href="#优化问题：（凸优化问题，二次规划问题）" class="headerlink" title="优化问题：（凸优化问题，二次规划问题）"></a>优化问题：（凸优化问题，二次规划问题）</h3><pre><code>&lt;center&gt;最小化(Minimize):$\frac{1}{2}||\omega||^2$&lt;/center&gt;&lt;center&gt;限制条件(Subject to):$y_i(\omega^Tx_i+b)&gt;=1,i=1,2,...,m$&lt;/center&gt;
-</code></pre><p><strong>事实1:</strong>$\omega ^Tx+b=0$与$a\omega ^Tx+ab=0,a\in R^+$是同一个平面$\Rightarrow$若$(\omega,b)$满足$y_i(\omega^Tx_i+b)&gt;=1,i=1,2,…,m$，则$(a\omega,ab)$也满足。</p>
+<h3 id="优化问题：（凸优化问题，二次规划问题）"><a href="#优化问题：（凸优化问题，二次规划问题）" class="headerlink" title="优化问题：（凸优化问题，二次规划问题）"></a>优化问题：（凸优化问题，二次规划问题）</h3><center>最小化(Minimize):$\frac{1}{2}||\omega||^2$</center>
+
+<center>限制条件(Subject to):$y_i(\omega^Tx_i+b)>=1,i=1,2,...,m$</center>
+
+<p><strong>事实1:</strong>$\omega ^Tx+b=0$与$a\omega ^Tx+ab=0,a\in R^+$是同一个平面$\Rightarrow$若$(\omega,b)$满足$y_i(\omega^Tx_i+b)&gt;=1,i=1,2,…,m$，则$(a\omega,ab)$也满足。</p>
 <p><strong>事实2:</strong>点到平面的距离</p>
 <center>向量$\vec{x_0}$到平面$\omega ^T+b=0$的距离</center>
 <center>$\frac{|\omega^Tx_0+b|}{||\omega||}$</center>
@@ -558,7 +681,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
