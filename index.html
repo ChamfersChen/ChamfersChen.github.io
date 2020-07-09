@@ -258,6 +258,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/SVM-nolinear/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chamfers' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/09/SVM-nolinear/" itemprop="url">SVM_nolinear</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-09T20:07:21+08:00">
+                2020-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="SVM处理非线性问题"><a href="#SVM处理非线性问题" class="headerlink" title="SVM处理非线性问题"></a><center>SVM处理非线性问题</center></h2><h3 id="1、优化问题"><a href="#1、优化问题" class="headerlink" title="1、优化问题"></a>1、优化问题</h3><center>最小化：$\frac{1}{2}||\omega||^2+C\sum_{i=1}^N\xi _i$</center>
+
+<center>限制条件:a、$y_i[\omega ^Tx_i+b]>=1-\xi$
+  b、$\xi _i>=0 (i=1...N)$
+</center>
+
+
+
+<h3 id="2、低维到高维映射-phi-x"><a href="#2、低维到高维映射-phi-x" class="headerlink" title="2、低维到高维映射$\phi(x)$"></a>2、低维到高维映射$\phi(x)$</h3><center>$x\rightarrow \phi(x)</center> 
+
+<center>\Rightarrow y_i[\omega ^Tx_i+b]>=1-\xi \rightarrow y_i[\omega ^T \phi(x_i)+b]>=1-\xi$</center>
+
+<p><strong>注意：</strong>$\phi(x)$是无限维，从而$\omega$也将是无限维的</p>
+<p>$\Rightarrow$</p>
+<p><strong>定理：</strong>我们可以不知道无限维映射$\phi(x)$的显式表达，我们只要知道一个核函数(Kernel Function):$K(x_i,x_j)=\phi(s_i)^T\phi(s_j)$</p>
+<p>则优化问题（1）仍然可解。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/Little-Rabbis/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -681,7 +816,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
