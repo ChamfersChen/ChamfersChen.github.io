@@ -332,14 +332,14 @@
             <h2 id="SVM处理非线性问题"><a href="#SVM处理非线性问题" class="headerlink" title="SVM处理非线性问题"></a><center>SVM处理非线性问题</center></h2><h3 id="1、优化问题"><a href="#1、优化问题" class="headerlink" title="1、优化问题"></a>1、优化问题</h3><center>最小化：$\frac{1}{2}||\omega||^2+C\sum_{i=1}^N\xi _i$</center>
 
 <center>限制条件:a、$y_i[\omega ^Tx_i+b]>=1-\xi$
-  b、$\xi _i>=0 (i=1...N)$
+  ;b、$\xi _i>=0 (i=1...N)$
 </center>
 
 
 
-<h3 id="2、低维到高维映射-phi-x"><a href="#2、低维到高维映射-phi-x" class="headerlink" title="2、低维到高维映射$\phi(x)$"></a>2、低维到高维映射$\phi(x)$</h3><center>$x\rightarrow \phi(x)</center> 
+<h3 id="2、低维到高维映射-phi-x"><a href="#2、低维到高维映射-phi-x" class="headerlink" title="2、低维到高维映射$\phi(x)$"></a>2、低维到高维映射$\phi(x)$</h3><center>$x \rightarrow \phi(x)</center> 
 
-<center>\Rightarrow y_i[\omega ^Tx_i+b]>=1-\xi \rightarrow y_i[\omega ^T \phi(x_i)+b]>=1-\xi$</center>
+<center> \Rightarrow y_i [\omega ^Tx_i+b]>=1-\xi \rightarrow y_i[\omega ^T \phi(x_i)+b]>=1-\xi$</center>
 
 <p><strong>注意：</strong>$\phi(x)$是无限维，从而$\omega$也将是无限维的</p>
 <p>$\Rightarrow$</p>

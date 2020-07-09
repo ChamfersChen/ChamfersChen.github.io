@@ -79,14 +79,14 @@
 
 
 
-<meta name="description" content="SVM处理非线性问题1、优化问题最小化：$\frac{1}{2}||\omega||^2+C\sum_{i&#x3D;1}^N\xi _i$  限制条件:a、$y_i[\omega ^Tx_i+b]&gt;&#x3D;1-\xi$   b、$\xi _i&gt;&#x3D;0 (i&#x3D;1...N)$     2、低维到高维映射$\phi(x)$$x\rightarrow \phi(x)   \Rightarrow y_i[\omega ^T">
+<meta name="description" content="SVM处理非线性问题1、优化问题最小化：$\frac{1}{2}||\omega||^2+C\sum_{i&#x3D;1}^N\xi _i$  限制条件:a、$y_i[\omega ^Tx_i+b]&gt;&#x3D;1-\xi$   ;b、$\xi _i&gt;&#x3D;0 (i&#x3D;1...N)$     2、低维到高维映射$\phi(x)$$x \rightarrow \phi(x)    \Rightarrow y_i [\omeg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="SVM_nolinear">
 <meta property="og:url" content="http://yoursite.com/2020/07/09/SVM-nolinear/index.html">
 <meta property="og:site_name" content="Chamfers&#39; Blog">
-<meta property="og:description" content="SVM处理非线性问题1、优化问题最小化：$\frac{1}{2}||\omega||^2+C\sum_{i&#x3D;1}^N\xi _i$  限制条件:a、$y_i[\omega ^Tx_i+b]&gt;&#x3D;1-\xi$   b、$\xi _i&gt;&#x3D;0 (i&#x3D;1...N)$     2、低维到高维映射$\phi(x)$$x\rightarrow \phi(x)   \Rightarrow y_i[\omega ^T">
+<meta property="og:description" content="SVM处理非线性问题1、优化问题最小化：$\frac{1}{2}||\omega||^2+C\sum_{i&#x3D;1}^N\xi _i$  限制条件:a、$y_i[\omega ^Tx_i+b]&gt;&#x3D;1-\xi$   ;b、$\xi _i&gt;&#x3D;0 (i&#x3D;1...N)$     2、低维到高维映射$\phi(x)$$x \rightarrow \phi(x)    \Rightarrow y_i [\omeg">
 <meta property="article:published_time" content="2020-07-09T12:07:21.000Z">
-<meta property="article:modified_time" content="2020-07-09T12:25:29.745Z">
+<meta property="article:modified_time" content="2020-07-09T12:27:50.228Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -331,14 +331,14 @@
         <h2 id="SVM处理非线性问题"><a href="#SVM处理非线性问题" class="headerlink" title="SVM处理非线性问题"></a><center>SVM处理非线性问题</center></h2><h3 id="1、优化问题"><a href="#1、优化问题" class="headerlink" title="1、优化问题"></a>1、优化问题</h3><center>最小化：$\frac{1}{2}||\omega||^2+C\sum_{i=1}^N\xi _i$</center>
 
 <center>限制条件:a、$y_i[\omega ^Tx_i+b]>=1-\xi$
-  b、$\xi _i>=0 (i=1...N)$
+  ;b、$\xi _i>=0 (i=1...N)$
 </center>
 
 
 
-<h3 id="2、低维到高维映射-phi-x"><a href="#2、低维到高维映射-phi-x" class="headerlink" title="2、低维到高维映射$\phi(x)$"></a>2、低维到高维映射$\phi(x)$</h3><center>$x\rightarrow \phi(x)</center> 
+<h3 id="2、低维到高维映射-phi-x"><a href="#2、低维到高维映射-phi-x" class="headerlink" title="2、低维到高维映射$\phi(x)$"></a>2、低维到高维映射$\phi(x)$</h3><center>$x \rightarrow \phi(x)</center> 
 
-<center>\Rightarrow y_i[\omega ^Tx_i+b]>=1-\xi \rightarrow y_i[\omega ^T \phi(x_i)+b]>=1-\xi$</center>
+<center> \Rightarrow y_i [\omega ^Tx_i+b]>=1-\xi \rightarrow y_i[\omega ^T \phi(x_i)+b]>=1-\xi$</center>
 
 <p><strong>注意：</strong>$\phi(x)$是无限维，从而$\omega$也将是无限维的</p>
 <p>$\Rightarrow$</p>
