@@ -343,7 +343,7 @@
 
 <p><strong>注意：</strong>$\phi(x)$是无限维，从而$\omega$也将是无限维的</p>
 <p>$\Rightarrow$</p>
-<p><strong>定理：</strong>我们可以不知道无限维映射$\phi(x)$的显式表达，我们只要知道一个核函数(Kernel Function):$K(x_i,x_j)=\phi(s_i)^T\phi(s_j)$，则优化问题（1）仍然可解。</p>
+<p><strong>定理：</strong>我们可以不知道无限维映射$\phi(x)$的显式表达，我们只要知道一个核函数(Kernel Function):$K(x_i,x_j)=\phi(x_i)^T\phi(x_j)$，则优化问题（1）仍然可解。</p>
 <h3 id="3、原问题和对偶问题"><a href="#3、原问题和对偶问题" class="headerlink" title="3、原问题和对偶问题"></a>3、原问题和对偶问题</h3><p>1）原问题(Prime Problem)</p>
 <center>最小化：$f(\omega)$</center>
 
@@ -369,6 +369,10 @@
 
 <center>证：$\theta(\alpha^*,\beta^*)=inf{L(\omega,\alpha^*,\beta^*)}<=inf{L(\omega^*,\alpha^*,\beta^*)}=f(\omega^*)+\sum_{i=1}^K \alpha_i^* g_i(\omega^*)+\sum_{i=1}^M \beta_i^* h_i(\omega^*)<=f(\omega^*)$</center>
 
+<p><strong>定义：</strong>$G=f(\omega^<em>)-\theta(\alpha^\</em>,\beta^*)&gt;=0，G$叫做原问题与对偶问题的间距(Duality Gap)</p>
+<p>$\Rightarrow$</p>
+<p><strong>强对偶定理：</strong>若$f(\omega)$为凸函数，且$g(\omega)=a\omega +b,h(\omega)=c\omega+d,$则由此优化问题的原问题与对偶问题的间距（$G$）为0，即$f(\omega^*)=\theta(\alpha^*,\beta^*)$</p>
+<p>$\Rightarrow (KTT条件)$     对$\forall i=1…K，$或者$\alpha _i^*=0$，或者$g_i^*(\omega ^*)=0$。</p>
 
           
         
