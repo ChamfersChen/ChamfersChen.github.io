@@ -343,8 +343,32 @@
 
 <p><strong>注意：</strong>$\phi(x)$是无限维，从而$\omega$也将是无限维的</p>
 <p>$\Rightarrow$</p>
-<p><strong>定理：</strong>我们可以不知道无限维映射$\phi(x)$的显式表达，我们只要知道一个核函数(Kernel Function):$K(x_i,x_j)=\phi(s_i)^T\phi(s_j)$</p>
-<p>则优化问题（1）仍然可解。</p>
+<p><strong>定理：</strong>我们可以不知道无限维映射$\phi(x)$的显式表达，我们只要知道一个核函数(Kernel Function):$K(x_i,x_j)=\phi(s_i)^T\phi(s_j)$，则优化问题（1）仍然可解。</p>
+<h3 id="3、原问题和对偶问题"><a href="#3、原问题和对偶问题" class="headerlink" title="3、原问题和对偶问题"></a>3、原问题和对偶问题</h3><p>1）原问题(Prime Problem)</p>
+<center>最小化：$f(\omega)$</center>
+
+<center>限制条件：a、$g_i(\omega)<=0 (i=1...K)$</center>
+
+<center>b、$h_i(\omega)=0 (i=1...M)$</center>
+
+<p>2)对偶问题(Dual Problem)</p>
+<center>1、定义：$L(\omega,\alpha,\beta)$</center>
+
+<center>$=f(\omega)+\sum_{i=1}^K \alpha_i g_i(\omega)+\sum_{i=1}^M \beta_i h_i(\omega)$</center>
+
+<center>$=f(\omega)+\alpha^T g(\omega)+\beta^T h(\omega)$</center>
+
+<center>2、对偶问题定义：</center>
+
+<center>最大化：$\theta(\alpha,\beta)=inf{L(\omega,\alpha,\beta)}$</center>
+
+<center>限制条件：$\alpha_i>=0 (i=1...K)$</center>
+
+<p><strong>定义：</strong>如果$\omega^*$是原问题的解，而$\alpha^*,\beta^*$是对偶问题的解，则有：</p>
+<center>$f(\omega^*)>=\theta(\alpha^*,\beta^*)$</center>
+
+<center>证：$\theta(\alpha^*,\beta^*)=inf{L(\omega,\alpha^*,\beta^*)}<=inf{L(\omega^*,\alpha^*,\beta^*)}=f(\omega^*)+\sum_{i=1}^K \alpha_i^* g_i(\omega^*)+\sum_{i=1}^M \beta_i^* h_i(\omega^*)<=f(\omega^*)$</center>
+
 
           
         

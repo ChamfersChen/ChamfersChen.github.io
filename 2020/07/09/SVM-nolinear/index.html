@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Chamfers&#39; Blog">
 <meta property="og:description" content="SVM处理非线性问题1、优化问题最小化：$\frac{1}{2}||\omega||^2+C\sum_{i&#x3D;1}^N\xi _i$  限制条件:a、$y_i[\omega ^Tx_i+b]&gt;&#x3D;1-\xi$   ;b、$\xi _i&gt;&#x3D;0 (i&#x3D;1...N)$     2、低维到高维映射$\phi(x)$$x \rightarrow \phi(x)$    $\Rightarrow y_i [\om">
 <meta property="article:published_time" content="2020-07-09T12:07:21.000Z">
-<meta property="article:modified_time" content="2020-07-09T12:29:00.516Z">
+<meta property="article:modified_time" content="2020-07-09T12:55:18.977Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 
@@ -342,8 +342,32 @@
 
 <p><strong>注意：</strong>$\phi(x)$是无限维，从而$\omega$也将是无限维的</p>
 <p>$\Rightarrow$</p>
-<p><strong>定理：</strong>我们可以不知道无限维映射$\phi(x)$的显式表达，我们只要知道一个核函数(Kernel Function):$K(x_i,x_j)=\phi(s_i)^T\phi(s_j)$</p>
-<p>则优化问题（1）仍然可解。</p>
+<p><strong>定理：</strong>我们可以不知道无限维映射$\phi(x)$的显式表达，我们只要知道一个核函数(Kernel Function):$K(x_i,x_j)=\phi(s_i)^T\phi(s_j)$，则优化问题（1）仍然可解。</p>
+<h3 id="3、原问题和对偶问题"><a href="#3、原问题和对偶问题" class="headerlink" title="3、原问题和对偶问题"></a>3、原问题和对偶问题</h3><p>1）原问题(Prime Problem)</p>
+<center>最小化：$f(\omega)$</center>
+
+<center>限制条件：a、$g_i(\omega)<=0 (i=1...K)$</center>
+
+<center>b、$h_i(\omega)=0 (i=1...M)$</center>
+
+<p>2)对偶问题(Dual Problem)</p>
+<center>1、定义：$L(\omega,\alpha,\beta)$</center>
+
+<center>$=f(\omega)+\sum_{i=1}^K \alpha_i g_i(\omega)+\sum_{i=1}^M \beta_i h_i(\omega)$</center>
+
+<center>$=f(\omega)+\alpha^T g(\omega)+\beta^T h(\omega)$</center>
+
+<center>2、对偶问题定义：</center>
+
+<center>最大化：$\theta(\alpha,\beta)=inf{L(\omega,\alpha,\beta)}$</center>
+
+<center>限制条件：$\alpha_i>=0 (i=1...K)$</center>
+
+<p><strong>定义：</strong>如果$\omega^*$是原问题的解，而$\alpha^*,\beta^*$是对偶问题的解，则有：</p>
+<center>$f(\omega^*)>=\theta(\alpha^*,\beta^*)$</center>
+
+<center>证：$\theta(\alpha^*,\beta^*)=inf{L(\omega,\alpha^*,\beta^*)}<=inf{L(\omega^*,\alpha^*,\beta^*)}=f(\omega^*)+\sum_{i=1}^K \alpha_i^* g_i(\omega^*)+\sum_{i=1}^M \beta_i^* h_i(\omega^*)<=f(\omega^*)$</center>
+
 
       
     </div>
@@ -490,7 +514,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM处理非线性问题"><span class="nav-number">1.</span> <span class="nav-text">SVM处理非线性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、优化问题"><span class="nav-number">1.1.</span> <span class="nav-text">1、优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、低维到高维映射-phi-x"><span class="nav-number">1.2.</span> <span class="nav-text">2、低维到高维映射$\phi(x)$</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM处理非线性问题"><span class="nav-number">1.</span> <span class="nav-text">SVM处理非线性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、优化问题"><span class="nav-number">1.1.</span> <span class="nav-text">1、优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、低维到高维映射-phi-x"><span class="nav-number">1.2.</span> <span class="nav-text">2、低维到高维映射$\phi(x)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、原问题和对偶问题"><span class="nav-number">1.3.</span> <span class="nav-text">3、原问题和对偶问题</span></a></li></ol></li></ol></div>
             
 
           </div>
