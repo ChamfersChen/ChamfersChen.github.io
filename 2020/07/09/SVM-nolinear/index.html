@@ -85,10 +85,13 @@
 <meta property="og:url" content="http://yoursite.com/2020/07/09/SVM-nolinear/index.html">
 <meta property="og:site_name" content="Chamfers&#39; Blog">
 <meta property="og:description" content="SVM处理非线性问题1、优化问题最小化：$\frac{1}{2}||\omega||^2+C\sum_{i&#x3D;1}^N\xi _i$  限制条件:a、$y_i[\omega ^Tx_i+b]&gt;&#x3D;1-\xi$   ;b、$\xi _i&gt;&#x3D;0 (i&#x3D;1...N)$     2、低维到高维映射$\phi(x)$$x \rightarrow \phi(x)$    $\Rightarrow y_i [\om">
+<meta property="og:image" content="http://yoursite.com/2020/07/09/SVM-nolinear/steps.jpg">
+<meta property="og:image" content="http://yoursite.com/2020/07/09/SVM-nolinear/compute.jpg">
 <meta property="article:published_time" content="2020-07-09T12:07:21.000Z">
-<meta property="article:modified_time" content="2020-07-09T13:32:40.215Z">
+<meta property="article:modified_time" content="2020-07-14T04:03:28.284Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/2020/07/09/SVM-nolinear/steps.jpg">
 
 
 
@@ -372,7 +375,30 @@
 <p>$\Rightarrow$</p>
 <p><strong>强对偶定理：</strong>若$f(\omega)$为凸函数，且$g(\omega)=a\omega +b,h(\omega)=c\omega+d,$则由此优化问题的原问题与对偶问题的间距（$G$）为0，即$f(\omega^*)=\theta(\alpha^*,\beta^*)$</p>
 <p>$\Rightarrow (KTT条件)$     对$\forall i=1…K，$或者$\alpha _i^*=0$，或者$g_i^*(\omega ^*)=0$。</p>
+<h2 id="SVM非线性"><a href="#SVM非线性" class="headerlink" title="SVM非线性"></a><center>SVM非线性</center></h2><center>最小化：$\frac{1}{2}||\omega||^2+C\sum_{i=1}^N \xi_i$</center>
 
+<center>限制条件的：1、$y_i[\omega ^T\phi (x_i)+b]>=1-\xi_i$</center>
+
+<center>2、$\xi_i>=0$</center>
+
+<center>Note:为了与原问题形式相同，令$\xi_i<=0$，将上述条件和最小化进行改写</center>
+
+<p><strong>原问题</strong>$\Rightarrow$</p>
+<center>最小化：$\frac{1}{2}||\omega||^2-C\sum_{i=1}^N \xi_i$</center>
+
+<center>限制条件的：1、$1+\xi_i-y_i[\omega ^T\phi (x_i)+b]<=0$</center>
+
+<center>2、$\xi_i<=0$</center>
+
+<p><strong>对偶问题</strong>$\Rightarrow$</p>
+<center>最大化：$\theta(\alpha,\beta)=inf{\frac{1}{2}||\omega||*2-C\sum_{i=1}^N\xi_i+\sum_{i=1}^N\xi_i\beta_i+\sum_{i=1}^N\alpha_i[1+\xi_i-y_i\omega^T\phi(x_i)-y_ib]}$</center>
+
+<center>限制条件：$\alpha_i>=0$</center>
+
+<center>$\beta_i>=0$</center>
+
+<img src="/2020/07/09/SVM-nolinear/steps.jpg" class="" title="[Setps]">
+<img src="/2020/07/09/SVM-nolinear/compute.jpg" class="" title="[Compute]">
       
     </div>
     
@@ -405,6 +431,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/07/14/SVMsummary/" rel="prev" title="SVMsummary">
+                SVMsummary <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -481,7 +511,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -518,7 +548,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM处理非线性问题"><span class="nav-number">1.</span> <span class="nav-text">SVM处理非线性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、优化问题"><span class="nav-number">1.1.</span> <span class="nav-text">1、优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、低维到高维映射-phi-x"><span class="nav-number">1.2.</span> <span class="nav-text">2、低维到高维映射$\phi(x)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、原问题和对偶问题"><span class="nav-number">1.3.</span> <span class="nav-text">3、原问题和对偶问题</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM处理非线性问题"><span class="nav-number">1.</span> <span class="nav-text">SVM处理非线性问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、优化问题"><span class="nav-number">1.1.</span> <span class="nav-text">1、优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、低维到高维映射-phi-x"><span class="nav-number">1.2.</span> <span class="nav-text">2、低维到高维映射$\phi(x)$</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、原问题和对偶问题"><span class="nav-number">1.3.</span> <span class="nav-text">3、原问题和对偶问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SVM非线性"><span class="nav-number">2.</span> <span class="nav-text">SVM非线性</span></a></li></ol></div>
             
 
           </div>

@@ -258,6 +258,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/14/SVMsummary/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chamfers' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/14/SVMsummary/" itemprop="url">SVMsummary</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-14T10:26:07+08:00">
+                2020-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="SVM总结"><a href="#SVM总结" class="headerlink" title="SVM总结"></a><center>SVM总结</center></h2><h3 id="SVM算法"><a href="#SVM算法" class="headerlink" title="SVM算法"></a>SVM算法</h3><p><strong>1、训练流程</strong></p>
+<p>输入${(x_i,y_i)}_{i=1…N}$</p>
+<p><strong><em>解优化问题：</em></strong></p>
+<center>最大化：$\theta(\alpha)=\sum_{i=1}^M\alpha_i-\frac{1}{2}\sum_{i=1}^M\sum_{j=1}^M\alpha_i\alpha_jy_iy_jK(x_i,x_j)$</center>
+
+<center>限制条件：1）$0<\alpha_i<=C$</center>
+
+<center>2）$\sum_{i=1}^M\alpha_iy_i=0$</center>
+
+<p><strong><em>算$b$:</em></strong></p>
+<center>由1、我们得知所有$\alpha_i$，取一个$0<\alpha_i<=C$</center>
+
+<center>$b=\frac{1-y_i\sum_{j=1}^M\alpha_jy_jK(x_i,x_j)}{y_i}$</center>
+
+<p><strong>2、测试流程</strong></p>
+<p>输入测试样本$X$</p>
+<center>若$\sum_{i=1}^M\alpha_iy_iK(x_i,X)+b>=0$,则$y=+1$</center>
+<center>若$\sum_{i=1}^M\alpha_iy_iK(x_i,X)+b<0$,则$y=-1$
+</center>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/SVM-nolinear/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -373,7 +512,30 @@
 <p>$\Rightarrow$</p>
 <p><strong>强对偶定理：</strong>若$f(\omega)$为凸函数，且$g(\omega)=a\omega +b,h(\omega)=c\omega+d,$则由此优化问题的原问题与对偶问题的间距（$G$）为0，即$f(\omega^*)=\theta(\alpha^*,\beta^*)$</p>
 <p>$\Rightarrow (KTT条件)$     对$\forall i=1…K，$或者$\alpha _i^*=0$，或者$g_i^*(\omega ^*)=0$。</p>
+<h2 id="SVM非线性"><a href="#SVM非线性" class="headerlink" title="SVM非线性"></a><center>SVM非线性</center></h2><center>最小化：$\frac{1}{2}||\omega||^2+C\sum_{i=1}^N \xi_i$</center>
 
+<center>限制条件的：1、$y_i[\omega ^T\phi (x_i)+b]>=1-\xi_i$</center>
+
+<center>2、$\xi_i>=0$</center>
+
+<center>Note:为了与原问题形式相同，令$\xi_i<=0$，将上述条件和最小化进行改写</center>
+
+<p><strong>原问题</strong>$\Rightarrow$</p>
+<center>最小化：$\frac{1}{2}||\omega||^2-C\sum_{i=1}^N \xi_i$</center>
+
+<center>限制条件的：1、$1+\xi_i-y_i[\omega ^T\phi (x_i)+b]<=0$</center>
+
+<center>2、$\xi_i<=0$</center>
+
+<p><strong>对偶问题</strong>$\Rightarrow$</p>
+<center>最大化：$\theta(\alpha,\beta)=inf{\frac{1}{2}||\omega||*2-C\sum_{i=1}^N\xi_i+\sum_{i=1}^N\xi_i\beta_i+\sum_{i=1}^N\alpha_i[1+\xi_i-y_i\omega^T\phi(x_i)-y_ib]}$</center>
+
+<center>限制条件：$\alpha_i>=0$</center>
+
+<center>$\beta_i>=0$</center>
+
+<img src="/2020/07/09/SVM-nolinear/steps.jpg" class="" title="[Setps]">
+<img src="/2020/07/09/SVM-nolinear/compute.jpg" class="" title="[Compute]">
           
         
       
@@ -844,7 +1006,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
