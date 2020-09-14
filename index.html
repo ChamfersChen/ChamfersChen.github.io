@@ -258,6 +258,135 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/paper01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chamfers' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/14/paper01/" itemprop="url">Paper01</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-14T10:45:58+08:00">
+                2020-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="DRG-Dual-Relation-Graph-for-Human-Object-Interaction-Detection"><a href="#DRG-Dual-Relation-Graph-for-Human-Object-Interaction-Detection" class="headerlink" title="DRG:Dual Relation Graph for Human-Object Interaction Detection"></a>DRG:Dual Relation Graph for Human-Object Interaction Detection</h2><p><strong>The task of human-object interaction detection</strong> aims to localize persons, object instances, as well as recognize the interactions (if any) between each pair of a person and an object.</p>
+<h3 id="Steps"><a href="#Steps" class="headerlink" title="Steps"></a><strong>Steps</strong></h3><p>(1)we first apply an off-the-shelf object detector <strong>Faster R-CNN</strong>  to detect all the human/object instances in an image,Given the detected bounding boxes $b_h and b_o$, we first extract the <strong>ROI pooled</strong> <strong>features</strong> (ROI池化后的特征)and pass them into the <u>human</u> and <u>object stream</u></p>
+<p>(2)We then pass the <u>detected bounding boxes</u> as well as <u>the object category information</u> to the <u>spatial-semantic stream</u>,We apply the proposed <strong>Dual Relation Graph (DRG)</strong> in the spatial-semantic stream.</p>
+<p>(3)Lastly, we fuse the action scores from the three streams (human, object, and spatial-semantic) to produce our final predictions</p>
+<h3 id="Core-Idea"><a href="#Core-Idea" class="headerlink" title="Core Idea"></a>Core Idea</h3><p><strong>Our core idea</strong> is to exploit the global object layout as contextual cues and use a human-centric as well as an object-centric subgraph to propagate and integrate rich relations among individual HOIs.</p>
+<p><strong>核心理念</strong>是利用全局对象布局作为上下文线索，并使用以人为中心的子图和以对象为中心的子图来传播并整合各个 HOIS 之间的丰富关系</p>
+<h3 id="Detail"><a href="#Detail" class="headerlink" title="Detail"></a>Detail</h3><img src="/2020/09/14/paper01/hoi.jpeg" class="" title="[HIO detection using Dual Relation Graph]">
+<h4 id="Dual-Relation-Graph"><a href="#Dual-Relation-Graph" class="headerlink" title="Dual Relation Graph"></a>Dual Relation Graph</h4><p><strong>Relation graph</strong>:For each node h in H, we connect it to all the other nodes in O. Similarly, for each node o in O, we connect it to all nodes in H</p>
+<p><strong><u>human-centric subgraph and object-centric subgraph</u></strong>:To exploit the relation among different HOIs performed by the same person, we construct a human-centric subgraph. Similarly, we construct an object-centric subgraph for the HOIs performed on the same object.We then connect all the HOI nodes and obtain human-centric HOI subgraph and object-centric HOI subgraph</p>
+<p><strong>Contextual feature aggregation</strong>. With these two HOI subgraphs, aggregating features as in attentional graph convolutional network </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/StartPapersLife/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1371,7 +1500,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
