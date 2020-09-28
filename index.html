@@ -258,6 +258,136 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/openCV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chamfers' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/28/openCV/" itemprop="url">openCV</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-09-28T17:23:29+08:00">
+                2020-09-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="OpenCV-Note"><a href="#OpenCV-Note" class="headerlink" title="OpenCV Note"></a><center>OpenCV Note</center></h2><p>Note by  python</p>
+<h3 id="OpenCV-For-Python-cv2"><a href="#OpenCV-For-Python-cv2" class="headerlink" title="OpenCV For Python (cv2)"></a>OpenCV For Python (cv2)</h3><h4 id="Display-a-Picture"><a href="#Display-a-Picture" class="headerlink" title="Display a Picture"></a>Display a Picture</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1</span></span><br><span class="line">image=cv.imread(<span class="string">"image_path"</span>)</span><br><span class="line"><span class="comment">#return 返回（高度，宽度，通道数）的元组</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2</span></span><br><span class="line">cv.imshow(<span class="string">"image_name"</span>,image)</span><br><span class="line"><span class="comment">#在窗口中显示出名为"image_name"的图像</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#3.The cv::waitKey() function asks the program to stop and wait for a keystroke. If a positive argument is given, </span></span><br><span class="line"><span class="comment">#the program will wait for that number of milliseconds and then continue even if nothing is pressed.</span></span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)<span class="comment">#the program will wait for a keystroke</span></span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">10</span>)<span class="comment">#the program will wait 10 milliseconds,and then continue</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#4、for short programs, we will skip this step</span></span><br><span class="line">cv.destroyWindow(<span class="string">"window_name"</span>)<span class="comment">#删除指定的窗口</span></span><br><span class="line">cv2.destroyAllWindows()<span class="comment">#删除所有的图片、视频窗口</span></span><br></pre></td></tr></table></figure>
+<h4 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.show video</span></span><br><span class="line">cap1=cv.VideoCapture(<span class="string">"video_path"</span>)<span class="comment">#传入视频路径，创建视频对象</span></span><br><span class="line">cap2=cv.VideoCapture(<span class="number">0</span>)<span class="comment">#调用内置摄像头</span></span><br><span class="line"></span><br><span class="line">cap1.release()</span><br><span class="line">cap2.release()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2.write to a avi file</span></span><br><span class="line">cap = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line">fourcc = cv2.VideoWriter_fourcc(*<span class="string">'XVID'</span>)</span><br><span class="line">_, frame = cap.read()</span><br><span class="line">out = cv2.VideoWriter(<span class="string">'output_white.avi'</span>, fourcc, <span class="number">20</span>, (frame.shape[<span class="number">1</span>], frame.shape[<span class="number">0</span>]))</span><br><span class="line">out = cv2.VideoWriter(<span class="string">'output_white.avi'</span>, fourcc, <span class="number">20</span>, (frame.shape[<span class="number">1</span>], frame.shape[<span class="number">0</span>]),<span class="literal">False</span>)</span><br><span class="line"><span class="comment">#out是一个VideoWriter实例化对象，第一个参数是要制作的视频的文件名，fourcc后面会详解，20是fps，接下来是视频的长宽，如果要保存只有</span></span><br><span class="line"><span class="comment">#两维的灰度图，则最后还要加个False</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('I', '4', '2', '0'),该参数是YUV编码类型，文件名后缀为.avi</span></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('P', 'I', 'M', 'I'),该参数是MPEG-1编码类型，文件名后缀为.avi</span></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'),该参数是MPEG-4编码类型，文件名后缀为.avi</span></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('T', 'H', 'E', 'O'),该参数是Ogg Vorbis,文件名后缀为.ogv</span></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('F', 'L', 'V', '1'),该参数是Flash视频，文件名后缀为.flv </span></span><br><span class="line"></span><br><span class="line">cap.release()</span><br><span class="line">out.release()</span><br></pre></td></tr></table></figure>
+<h4 id="A-Simple-Transformation"><a href="#A-Simple-Transformation" class="headerlink" title="A Simple Transformation"></a>A Simple Transformation</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1、smoothing</span></span><br><span class="line"><span class="comment">#The size of the Gaussian kernel should always be given in odd numbers since the Gaussian kernel (specified here #by cv::Size(5,5)) is computed at the center pixel in thatarea.</span></span><br><span class="line">gaussian=cv.GaussianBlur(src,(ksize),sigmaX)</span><br><span class="line"><span class="comment">#dst=	cv.GaussianBlur(	src, ksize, sigmaX[, dst[, sigmaY[, borderType]]]	)</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2、both Gaussian Blur and downsampling</span></span><br><span class="line">downsample=cv.pyrDown(image)</span><br><span class="line"><span class="comment">#Using cv::pyrDown() to create a new image that is half the width and height of the input image,and blur</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#3、Canny</span></span><br><span class="line">cann=cv.Canny(image, threshold1, threshold2)</span><br><span class="line"><span class="comment">#低于阈值1的像素点会被认为不是边缘；</span></span><br><span class="line"><span class="comment">#高于阈值2的像素点会被认为是边缘；</span></span><br><span class="line"><span class="comment">#在阈值1和阈值2之间的像素点,若与第2步得到的边缘像素点相邻，则被认为是边缘，否则被认为不是边缘。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#4.cvtColor</span></span><br><span class="line">tr_image=cv.cvtColor(image,code)</span><br><span class="line"><span class="comment">#将image图片转换为cv.code类型的图片</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/paper01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1500,7 +1630,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
