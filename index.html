@@ -258,6 +258,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/03/What-s-PyTorch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="John Doe">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chamfers' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/03/What-s-PyTorch/" itemprop="url">What's_PyTorch</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-10-03T10:05:39+08:00">
+                2020-10-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="什么是PyTorch"><a href="#什么是PyTorch" class="headerlink" title="什么是PyTorch?"></a>什么是PyTorch?</h1><p>PyTorch是一个基于Python的科学计算库，它有以下特点:</p>
+<ul>
+<li>类似于NumPy，但是它可以使用GPU</li>
+<li>可以用它定义深度学习模型，可以灵活地进行深度学习模型的训练和使用</li>
+</ul>
+<h2 id="Tensors"><a href="#Tensors" class="headerlink" title="Tensors"></a>Tensors</h2><p>Tensor类似与NumPy的ndarray，唯一的区别是Tensor可以在GPU上加速运算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br></pre></td></tr></table></figure>
+<p>构造一个未初始化的5x3矩阵:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=torch.empty(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>构建一个随机初始化的矩阵:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=torch.rand(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>构建一个全部为0，类型为long的矩阵（整形int 64）:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x=torch.zeros(<span class="number">5</span>,<span class="number">3</span>,dtype=torch.long)</span><br><span class="line"><span class="comment">#x=torch.zeros(5,3).long()</span></span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>从数据直接直接构建tensor:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x=torch.Tensor([<span class="number">5</span>,<span class="number">3</span>])</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>也可以从一个已有的tensor构建一个tensor。这些方法会重用原来tensor的特征，例如，数据类型，除非提供新的数据。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">x=x.new_ones(<span class="number">5</span>,<span class="number">3</span>,dtype=torch.double)</span><br><span class="line">x=torch.randn_like(x,dtype=torch.float)</span><br><span class="line">x</span><br></pre></td></tr></table></figure>
+<p>得到tensor的形状:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x.shape  <span class="comment">#x.shape[1]</span></span><br><span class="line">x.size() <span class="comment">#x.size(1)</span></span><br></pre></td></tr></table></figure>
+<div class="alert alert-info"><h4>注意</h4><p>``torch.Size`` 返回的是一个tuple</p></div>
+
+<h2 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h2><p>有很多种tensor运算。我们先介绍加法运算。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y=torch.rand(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line">y</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x+y</span><br></pre></td></tr></table></figure>
+<p>另一种着加法的写法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">torch.add(x,y)</span><br></pre></td></tr></table></figure>
+<p>加法：把输出作为一个变量</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">result=torch.empty(<span class="number">5</span>,<span class="number">3</span>)</span><br><span class="line">torch.add(x,y,out=result)</span><br><span class="line"><span class="comment">#result=x+y</span></span><br><span class="line">result</span><br></pre></td></tr></table></figure>
+<p>in-place加法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">y.add_(x)</span><br><span class="line">y</span><br></pre></td></tr></table></figure>
+<div class="alert alert-info"><h4>注意</h4><p>任何in-place的运算都会以``_``结尾。
+    举例来说：``x.copy_(y)``, ``x.t_()``, 会改变 ``x``。</p></div>
+
+
+<p>各种类似NumPy的indexing都可以在PyTorch tensor上面使用。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">x[<span class="number">1</span>:,<span class="number">1</span>:]<span class="comment">#like numpy</span></span><br></pre></td></tr></table></figure>
+<p>Resizing: 如果你希望resize/reshape一个tensor，可以使用<code>torch.view</code>：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x=torch.rand(<span class="number">4</span>,<span class="number">4</span>)</span><br><span class="line">y=x.view(<span class="number">16</span>)</span><br><span class="line">z=x.view(<span class="number">-1</span>,<span class="number">8</span>)</span><br><span class="line">z</span><br></pre></td></tr></table></figure>
+<p>如果你有<u>一个只有一个元素的tensor</u>，使用<code>.item()</code>方法可以把里面的value变成Python数值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x&#x3D;torch.randn(1)</span><br><span class="line">x.item()</span><br></pre></td></tr></table></figure>
+<p><strong>更多阅读</strong></p>
+<p>  各种Tensor operations, 包括transposing, indexing, slicing,<br>  mathematical operations, linear algebra, random numbers在<br>  <code>&lt;https://pytorch.org/docs/torch&gt;</code>.</p>
+<h2 id="Numpy和Tensor之间的转化"><a href="#Numpy和Tensor之间的转化" class="headerlink" title="Numpy和Tensor之间的转化"></a>Numpy和Tensor之间的转化</h2><p>在Torch Tensor和NumPy array之间相互转化非常容易。</p>
+<p>Torch Tensor和NumPy array会共享内存，所以改变其中一项也会改变另一项。</p>
+<p>把Torch Tensor转变成NumPy Array</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=torch.ones(<span class="number">5</span>)</span><br><span class="line">b=a.numpy()</span><br></pre></td></tr></table></figure>
+<p>改变numpy array里面的值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">b[1]&#x3D;2</span><br><span class="line">b</span><br><span class="line">#out:array([1., 2., 1., 1., 1.], dtype&#x3D;float32)</span><br><span class="line">a</span><br><span class="line">#out:tensor([1., 2., 1., 1., 1.])</span><br></pre></td></tr></table></figure>
+<p>把NumPy ndarray转成Torch Tensor</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line">a=np.ones(<span class="number">5</span>)</span><br><span class="line">b=torch.from_numpy(a)</span><br><span class="line">np.add(a,<span class="number">1</span>,out=a)</span><br><span class="line">print(a)</span><br><span class="line"><span class="comment">#out:[2. 2. 2. 2. 2.]</span></span><br><span class="line">print(b)</span><br><span class="line"><span class="comment">#out:tensor([2., 2., 2., 2., 2.], dtype=torch.float64)</span></span><br></pre></td></tr></table></figure>
+<p>所有CPU上的Tensor都支持转成numpy或者从numpy转成Tensor。</p>
+<h2 id="CUDA-Tensors"><a href="#CUDA-Tensors" class="headerlink" title="CUDA Tensors"></a>CUDA Tensors</h2><p>使用<code>.to</code>方法，Tensor可以被移动到别的device上。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> torch.cuda.is_available():</span><br><span class="line">    device = torch.device(<span class="string">"cuda"</span>)</span><br><span class="line">    y = torch.ones_like(x, device=device)</span><br><span class="line">    x = x.to(device)</span><br><span class="line">    z = x + y</span><br><span class="line">    print(z)</span><br><span class="line">    print(z.to(<span class="string">"cpu"</span>, torch.double))</span><br><span class="line">    </span><br><span class="line">y.to(<span class="string">"cpu"</span>).data.numpy()</span><br><span class="line">y.cpu().data.numpy()</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">model = model.cuda()</span><br></pre></td></tr></table></figure>
+<h2 id="热身-用numpy实现两层神经网络"><a href="#热身-用numpy实现两层神经网络" class="headerlink" title="热身: 用numpy实现两层神经网络"></a>热身: 用numpy实现两层神经网络</h2><p>一个全连接ReLU神经网络，一个隐藏层，没有bias。用来从x预测y，使用L2 Loss。</p>
+<ul>
+<li>$h = W_1X$</li>
+<li>$a = max(0, h)$</li>
+<li>$y_{hat} = W_2a$</li>
+</ul>
+<p>这一实现完全使用numpy来计算前向神经网络，loss，和反向传播。</p>
+<ul>
+<li>forward pass</li>
+<li>loss</li>
+<li>backward pass</li>
+</ul>
+<p>numpy ndarray是一个普通的n维array。它不知道任何关于深度学习或者梯度(gradient)的知识，也不知道计算图(computation graph)，只是一种用来计算数学运算的数据结构。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment">#crate data</span></span><br><span class="line">N,D_in,H,D_out=<span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x=np.random.randn(N,D_in)</span><br><span class="line">y=np.random.randn(N,D_out)</span><br><span class="line"></span><br><span class="line">w1=np.random.randn(D_in,H)</span><br><span class="line">w2=np.random.randn(H,D_out)</span><br><span class="line"></span><br><span class="line">learning_rate=<span class="number">1e-6</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#forward</span></span><br><span class="line">    h=x.dot(w1)<span class="comment">#N*H</span></span><br><span class="line">    h_relu=np.maximum(<span class="number">0</span>,h)<span class="comment">#N*H</span></span><br><span class="line">    y_pred=h_relu.dot(w2)<span class="comment">#N*D_out</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#loss function</span></span><br><span class="line">    loss=<span class="number">1.0</span>/<span class="number">2.0</span>*np.square(y_pred-y).sum()</span><br><span class="line">    print(i,loss)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#backward</span></span><br><span class="line">    grad_y_pred=y_pred-y<span class="comment">#N*D_out</span></span><br><span class="line">    grad_w2=h_relu.T.dot(grad_y_pred)<span class="comment">#H*D_out</span></span><br><span class="line">    </span><br><span class="line">    grad_h_relu=grad_y_pred.dot(w2.T)<span class="comment">#N*H</span></span><br><span class="line">    grad_h=grad_h_relu.copy()</span><br><span class="line">    grad_h[h&lt;<span class="number">0</span>]=<span class="number">0</span><span class="comment">#N*H</span></span><br><span class="line">    grad_w1=x.T.dot(grad_h)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#update w1,w2</span></span><br><span class="line">    w1-=learning_rate*grad_w1</span><br><span class="line">    w2-=learning_rate*grad_w2</span><br></pre></td></tr></table></figure>
+<h2 id="PyTorch-Tensors"><a href="#PyTorch-Tensors" class="headerlink" title="PyTorch: Tensors"></a>PyTorch: Tensors</h2><p>这次我们使用PyTorch tensors来创建前向神经网络，计算损失，以及反向传播。</p>
+<p>一个PyTorch Tensor很像一个numpy的ndarray。但是它和numpy ndarray最大的区别是，PyTorch Tensor可以在CPU或者GPU上运算。如果想要在GPU上运算，就需要把Tensor换成cuda类型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment">#crate data</span></span><br><span class="line">N,D_in,H,D_out=<span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x=torch.randn(N,D_in)</span><br><span class="line">y=torch.randn(N,D_out)</span><br><span class="line"></span><br><span class="line">w1=torch.randn(D_in,H)</span><br><span class="line">w2=torch.randn(H,D_out)</span><br><span class="line"></span><br><span class="line">learning_rate=<span class="number">1e-6</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>):</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#forward</span></span><br><span class="line">    h=x.mm(w1)<span class="comment">#N*H</span></span><br><span class="line">    h_relu=h.clamp(min=<span class="number">0</span>)<span class="comment">#N*H</span></span><br><span class="line">    y_pred=h_relu.mm(w2)<span class="comment">#N*D_out</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">#loss function</span></span><br><span class="line">    loss=<span class="number">1.0</span>/<span class="number">2.0</span>*(y_pred-y).pow(<span class="number">2</span>).sum()</span><br><span class="line">    print(i,loss.item())</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#backward</span></span><br><span class="line">    grad_y_pred=y_pred-y<span class="comment">#N*D_out</span></span><br><span class="line">    grad_w2=h_relu.t().mm(grad_y_pred)<span class="comment">#H*D_out</span></span><br><span class="line">    </span><br><span class="line">    grad_h_relu=grad_y_pred.mm(w2.t())<span class="comment">#N*H</span></span><br><span class="line">    grad_h=grad_h_relu.clone()</span><br><span class="line">    grad_h[h&lt;<span class="number">0</span>]=<span class="number">0</span><span class="comment">#N*H</span></span><br><span class="line">    grad_w1=x.t().mm(grad_h)</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#update w1,w2</span></span><br><span class="line">    w1-=learning_rate*grad_w1</span><br><span class="line">    w2-=learning_rate*grad_w2</span><br></pre></td></tr></table></figure>
+<p>简单的autograd</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">x = torch.tensor(<span class="number">1.</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">w = torch.tensor(<span class="number">2.</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line">b = torch.tensor(<span class="number">3.</span>, requires_grad=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">y = w*x + b <span class="comment"># y = 2*1+3</span></span><br><span class="line"></span><br><span class="line">y.backward()</span><br><span class="line"></span><br><span class="line"><span class="comment"># dy / dw = x</span></span><br><span class="line">print(w.grad)</span><br><span class="line">print(x.grad)</span><br><span class="line">print(b.grad)</span><br></pre></td></tr></table></figure>
+<h2 id="PyTorch-Tensor和autograd"><a href="#PyTorch-Tensor和autograd" class="headerlink" title="PyTorch: Tensor和autograd"></a>PyTorch: Tensor和autograd</h2><p>PyTorch的一个重要功能就是autograd，也就是说只要定义了forward pass(前向神经网络)，计算了loss之后，PyTorch可以自动求导计算模型所有参数的梯度。</p>
+<p>一个PyTorch的Tensor表示计算图中的一个节点。如果<code>x</code>是一个Tensor并且<code>x.requires_grad=True</code>那么<code>x.grad</code>是另一个储存着<code>x</code>当前梯度(相对于一个scalar，常常是loss)的向量。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment">#crate data</span></span><br><span class="line">N,D_in,H,D_out=<span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x=torch.randn(N,D_in)</span><br><span class="line">y=torch.randn(N,D_out)</span><br><span class="line">w1=torch.randn(D_in,H,requires_grad=<span class="literal">True</span>)</span><br><span class="line">w2=torch.randn(H,D_out,requires_grad=<span class="literal">True</span>)</span><br><span class="line"></span><br><span class="line">learning_rate=<span class="number">1e-6</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>): </span><br><span class="line">    <span class="comment">#forward</span></span><br><span class="line">    y_pred=x.mm(w1).clamp(min=<span class="number">0</span>).mm(w2)<span class="comment">#N*D_out</span></span><br><span class="line">    <span class="comment">#loss function</span></span><br><span class="line">    loss=<span class="number">1.0</span>/<span class="number">2.0</span>*(y_pred-y).pow(<span class="number">2</span>).sum()</span><br><span class="line">    print(i,loss.item())</span><br><span class="line">  	<span class="comment">#**********关键点***********#</span></span><br><span class="line">    <span class="comment">#backward</span></span><br><span class="line">    loss.backward()</span><br><span class="line">    <span class="comment">#update w1,w2</span></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        w1-=learning_rate*w1.grad</span><br><span class="line">        w2-=learning_rate*w2.grad</span><br><span class="line">        <span class="comment">#将grad清零，否则grad会一直增加</span></span><br><span class="line">        w1.grad.zero_()</span><br><span class="line">        w2.grad.zero_()</span><br></pre></td></tr></table></figure>
+<h2 id="PyTorch-nn"><a href="#PyTorch-nn" class="headerlink" title="PyTorch: nn"></a>PyTorch: nn</h2><p>这次我们使用PyTorch中nn这个库来构建网络。<br>用PyTorch autograd来构建计算图和计算gradients，<br>然后PyTorch会帮我们自动计算gradient。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment">#crate data</span></span><br><span class="line">N,D_in,H,D_out=<span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x=torch.randn(N,D_in)</span><br><span class="line">y=torch.randn(N,D_out)</span><br><span class="line"><span class="comment">#Net structure</span></span><br><span class="line">model = torch.nn.Sequential(</span><br><span class="line">    torch.nn.Linear(D_in,H),</span><br><span class="line">    torch.nn.ReLU(),</span><br><span class="line">    torch.nn.Linear(H,D_out)</span><br><span class="line">)</span><br><span class="line"><span class="comment">#initial w</span></span><br><span class="line">torch.nn.init.normal_(model[<span class="number">0</span>].weight)</span><br><span class="line">torch.nn.init.normal_(model[<span class="number">2</span>].weight)</span><br><span class="line"></span><br><span class="line">loss_fn=torch.nn.MSELoss()</span><br><span class="line">learning_rate=<span class="number">5.0</span>*<span class="number">1e-4</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>): </span><br><span class="line">    <span class="comment">#forward</span></span><br><span class="line">    y_pred=model(x)<span class="comment">#N*D_out</span></span><br><span class="line">    <span class="comment">#loss function</span></span><br><span class="line">    loss=loss_fn(y_pred,y)</span><br><span class="line">    print(i,loss.item())</span><br><span class="line">    <span class="comment">#backward</span></span><br><span class="line">    loss.backward()</span><br><span class="line">    <span class="comment">#update w1,w2</span></span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">for</span> param <span class="keyword">in</span> model.parameters():</span><br><span class="line">            param-=learning_rate*param.grad</span><br><span class="line">        <span class="comment">#将grad清零，否则grad会一直增加</span></span><br><span class="line">        model.zero_grad()</span><br></pre></td></tr></table></figure>
+<h2 id="PyTorch-optim"><a href="#PyTorch-optim" class="headerlink" title="PyTorch: optim"></a>PyTorch: optim</h2><p>这一次我们不再手动更新模型的weights,而是使用optim这个包来帮助我们更新参数。<br>optim这个package提供了各种不同的模型优化方法，包括SGD+momentum, RMSProp, Adam等等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment">#crate data</span></span><br><span class="line">N,D_in,H,D_out=<span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x=torch.randn(N,D_in)</span><br><span class="line">y=torch.randn(N,D_out)</span><br><span class="line"><span class="comment">#Net structure</span></span><br><span class="line">model = torch.nn.Sequential(</span><br><span class="line">    torch.nn.Linear(D_in,H),</span><br><span class="line">    torch.nn.ReLU(),</span><br><span class="line">    torch.nn.Linear(H,D_out)</span><br><span class="line">)</span><br><span class="line"><span class="comment">#initial w</span></span><br><span class="line">torch.nn.init.normal_(model[<span class="number">0</span>].weight)</span><br><span class="line">torch.nn.init.normal_(model[<span class="number">2</span>].weight)</span><br><span class="line"></span><br><span class="line">learning_rate=<span class="number">1e-5</span></span><br><span class="line">loss_fn=torch.nn.MSELoss()</span><br><span class="line">optimizer=torch.optim.Adam(model.parameters(),lr=learning_rate)</span><br><span class="line">res=np.array([])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>): </span><br><span class="line">    <span class="comment">#forward</span></span><br><span class="line">    y_pred=model(x)<span class="comment">#N*D_out</span></span><br><span class="line">    <span class="comment">#loss function</span></span><br><span class="line">    loss=loss_fn(y_pred,y)</span><br><span class="line">    res=np.append(res,loss.item())</span><br><span class="line">    print(i,loss.item())</span><br><span class="line">    <span class="comment">#backward</span></span><br><span class="line">    loss.backward()</span><br><span class="line">    <span class="comment">#update grads</span></span><br><span class="line">    optimizer.step()</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.plot(res)</span><br></pre></td></tr></table></figure>
+<h2 id="PyTorch-自定义-nn-Modules"><a href="#PyTorch-自定义-nn-Modules" class="headerlink" title="PyTorch: 自定义 nn Modules"></a>PyTorch: 自定义 nn Modules</h2><p>我们可以定义一个模型，这个模型继承自nn.Module类。如果需要定义一个比Sequential模型更加复杂的模型，就需要定义nn.Module模型。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment">#crate data</span></span><br><span class="line">N,D_in,H,D_out=<span class="number">64</span>,<span class="number">1000</span>,<span class="number">100</span>,<span class="number">10</span></span><br><span class="line">x=torch.randn(N,D_in)</span><br><span class="line">y=torch.randn(N,D_out)</span><br><span class="line"><span class="comment">#*************************************#</span></span><br><span class="line"><span class="comment">#Myself Net structure</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TwoLayersNet</span><span class="params">(torch.nn.Module)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,D_in,H,D_out)</span>:</span></span><br><span class="line">        super(TwoLayersNet,self).__init__()</span><br><span class="line">        self.linear1=torch.nn.Linear(D_in,H,bias=<span class="literal">False</span>)</span><br><span class="line">        self.linear2=torch.nn.Linear(H,D_out,bias=<span class="literal">False</span>)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">forward</span><span class="params">(self,x)</span>:</span></span><br><span class="line">        y_pred=self.linear2(self.linear1(x).clamp(min=<span class="number">0</span>))</span><br><span class="line">        <span class="keyword">return</span> y_pred</span><br><span class="line"><span class="comment">#************************************#</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#initial w</span></span><br><span class="line"><span class="comment"># torch.nn.init.normal_(model[0].weight)</span></span><br><span class="line"><span class="comment"># torch.nn.init.normal_(model[2].weight)</span></span><br><span class="line"></span><br><span class="line">model=TwoLayersNet(D_in,H,D_out)</span><br><span class="line">learning_rate=<span class="number">8.0</span>*<span class="number">1e-6</span></span><br><span class="line">loss_fn=torch.nn.MSELoss()</span><br><span class="line">optimizer=torch.optim.Adam(model.parameters(),lr=learning_rate)</span><br><span class="line">res=np.array([])</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1000</span>): </span><br><span class="line">    <span class="comment">#forward</span></span><br><span class="line">    y_pred=model(x)<span class="comment">#N*D_out</span></span><br><span class="line">    <span class="comment">#loss function</span></span><br><span class="line">    loss=loss_fn(y_pred,y)</span><br><span class="line">    res=np.append(res,loss.item())</span><br><span class="line">    print(i,loss.item())</span><br><span class="line">    <span class="comment">#backward</span></span><br><span class="line">    loss.backward()</span><br><span class="line">    <span class="comment">#update grads</span></span><br><span class="line">    optimizer.step()</span><br><span class="line">    </span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">plt.plot(res)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/openCV/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -469,130 +669,6 @@
 <h4 id="Dual-Relation-Graph"><a href="#Dual-Relation-Graph" class="headerlink" title="Dual Relation Graph"></a>Dual Relation Graph</h4><p><strong>Relation graph</strong>:For each node h in H, we connect it to all the other nodes in O. Similarly, for each node o in O, we connect it to all nodes in H</p>
 <p><strong><u>human-centric subgraph and object-centric subgraph</u></strong>:To exploit the relation among different HOIs performed by the same person, we construct a human-centric subgraph. Similarly, we construct an object-centric subgraph for the HOIs performed on the same object.We then connect all the HOI nodes and obtain human-centric HOI subgraph and object-centric HOI subgraph</p>
 <p><strong>Contextual feature aggregation</strong>. With these two HOI subgraphs, aggregating features as in attentional graph convolutional network </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/StartPapersLife/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chamfers' Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/17/StartPapersLife/" itemprop="url">StartPapersLife</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-08-17T20:38:29+08:00">
-                2020-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="开启我的论文生涯"><a href="#开启我的论文生涯" class="headerlink" title="开启我的论文生涯"></a><center>开启我的论文生涯</center></h3><p>通过最近几周的学习，我已经基本上对<strong>机器学习</strong>相关的算法有了一些简单的了解，也只是很表层的认识，至于代码，我还没有实现。下面对我之前所做的一些事情进行简单的总结，也规划一下我接下来的任务。</p>
-<p>这几周，我花了大部分的时间和精力去阅读李航老师的《统计学习方法》，简单了解了机器学习中的主流算法，更是花了大部分的时间精读了<strong>支持向量机(Suport Vector Machine,SVM)</strong>算法的实现，简单了解了<strong>朴素贝叶斯算法</strong>和<strong>逻辑斯谛回归</strong>，对<strong>EM算法</strong>和<strong>隐马尔可夫模型</strong>有较大的困惑，还需要继续钻研；也阅读了周志华老师的《机器学习》对<strong>神经网络</strong>有了初步的了解，其中<strong>后向传播算法</strong>还需经常巩固；通过视频学习了大量有关<strong>计算机视觉</strong>的相关理论知识，对<strong>卷积神经网络</strong>有了比较清晰的认识，但更深的理论有一些困惑，如，R-CNN,Fast R-CNN,Faster R-CNN。</p>
-<p>之后，我会阅读大量的论文、文献，至少一星期看一篇，并且在博客中写一点自己的想法，争取弄懂！！！博客中还会更新近期的一些想法和阅读感受，希望自己能够坚持下去</p>
-<p align="right">——Chamfers</p>
-
 
           
         
