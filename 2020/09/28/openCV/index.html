@@ -86,8 +86,8 @@
 <meta property="og:site_name" content="Chamfers&#39; Blog">
 <meta property="og:description" content="OpenCV NoteNote by  python OpenCV For Python (cv2)Display a Picture123#1image&#x3D;cv.imread(&quot;image_path&quot;)#return 返回（高度，宽度，通道数）的元组 123#2cv.imshow(&quot;image_name&quot;,image)#在窗口中显示出名为&quot;image_name&quot;的图像 123456#3.The c">
 <meta property="article:published_time" content="2020-09-28T09:23:29.000Z">
-<meta property="article:modified_time" content="2020-09-28T09:26:48.143Z">
-<meta property="article:author" content="John Doe">
+<meta property="article:modified_time" content="2020-10-18T07:59:20.124Z">
+<meta property="article:author" content="Chamfers">
 <meta name="twitter:card" content="summary">
 
 
@@ -264,7 +264,7 @@
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/28/openCV/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="John Doe">
+      <meta itemprop="name" content="Chamfers">
       <meta itemprop="description" content="">
       <meta itemprop="image" content="/images/avatar.gif">
     </span>
@@ -333,6 +333,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2</span></span><br><span class="line">cv.imshow(<span class="string">"image_name"</span>,image)</span><br><span class="line"><span class="comment">#在窗口中显示出名为"image_name"的图像</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#3.The cv::waitKey() function asks the program to stop and wait for a keystroke. If a positive argument is given, </span></span><br><span class="line"><span class="comment">#the program will wait for that number of milliseconds and then continue even if nothing is pressed.</span></span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">0</span>)<span class="comment">#the program will wait for a keystroke</span></span><br><span class="line"></span><br><span class="line">cv.waitKey(<span class="number">10</span>)<span class="comment">#the program will wait 10 milliseconds,and then continue</span></span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#4、for short programs, we will skip this step</span></span><br><span class="line">cv.destroyWindow(<span class="string">"window_name"</span>)<span class="comment">#删除指定的窗口</span></span><br><span class="line">cv2.destroyAllWindows()<span class="comment">#删除所有的图片、视频窗口</span></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <h4 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1.show video</span></span><br><span class="line">cap1=cv.VideoCapture(<span class="string">"video_path"</span>)<span class="comment">#传入视频路径，创建视频对象</span></span><br><span class="line">cap2=cv.VideoCapture(<span class="number">0</span>)<span class="comment">#调用内置摄像头</span></span><br><span class="line"></span><br><span class="line">cap1.release()</span><br><span class="line">cap2.release()</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#2.write to a avi file</span></span><br><span class="line">cap = cv2.VideoCapture(<span class="number">0</span>)</span><br><span class="line">fourcc = cv2.VideoWriter_fourcc(*<span class="string">'XVID'</span>)</span><br><span class="line">_, frame = cap.read()</span><br><span class="line">out = cv2.VideoWriter(<span class="string">'output_white.avi'</span>, fourcc, <span class="number">20</span>, (frame.shape[<span class="number">1</span>], frame.shape[<span class="number">0</span>]))</span><br><span class="line">out = cv2.VideoWriter(<span class="string">'output_white.avi'</span>, fourcc, <span class="number">20</span>, (frame.shape[<span class="number">1</span>], frame.shape[<span class="number">0</span>]),<span class="literal">False</span>)</span><br><span class="line"><span class="comment">#out是一个VideoWriter实例化对象，第一个参数是要制作的视频的文件名，fourcc后面会详解，20是fps，接下来是视频的长宽，如果要保存只有</span></span><br><span class="line"><span class="comment">#两维的灰度图，则最后还要加个False</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('I', '4', '2', '0'),该参数是YUV编码类型，文件名后缀为.avi</span></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('P', 'I', 'M', 'I'),该参数是MPEG-1编码类型，文件名后缀为.avi</span></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('X', 'V', 'I', 'D'),该参数是MPEG-4编码类型，文件名后缀为.avi</span></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('T', 'H', 'E', 'O'),该参数是Ogg Vorbis,文件名后缀为.ogv</span></span><br><span class="line"><span class="comment">#cv2.VideoWriter_fourcc('F', 'L', 'V', '1'),该参数是Flash视频，文件名后缀为.flv </span></span><br><span class="line"></span><br><span class="line">cap.release()</span><br><span class="line">out.release()</span><br></pre></td></tr></table></figure>
 <h4 id="A-Simple-Transformation"><a href="#A-Simple-Transformation" class="headerlink" title="A Simple Transformation"></a>A Simple Transformation</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#1、smoothing</span></span><br><span class="line"><span class="comment">#The size of the Gaussian kernel should always be given in odd numbers since the Gaussian kernel (specified here #by cv::Size(5,5)) is computed at the center pixel in thatarea.</span></span><br><span class="line">gaussian=cv.GaussianBlur(src,(ksize),sigmaX)</span><br><span class="line"><span class="comment">#dst=	cv.GaussianBlur(	src, ksize, sigmaX[, dst[, sigmaY[, borderType]]]	)</span></span><br></pre></td></tr></table></figure>
@@ -441,7 +442,11 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <p class="site-author-name" itemprop="name">John Doe</p>
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.gif"
+                alt="Chamfers" />
+            
+              <p class="site-author-name" itemprop="name">Chamfers</p>
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
@@ -452,7 +457,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -513,7 +518,7 @@
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">John Doe</span>
+  <span class="author" itemprop="copyrightHolder">Chamfers</span>
 
   
 </div>
