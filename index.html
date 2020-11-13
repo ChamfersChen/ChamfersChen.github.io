@@ -328,8 +328,7 @@
 
       
         
-          
-            <h1 id="Java编程思想"><a href="#Java编程思想" class="headerlink" title="Java编程思想"></a>Java编程思想</h1><h2 id="第2章-一切都是对象"><a href="#第2章-一切都是对象" class="headerlink" title="第2章 一切都是对象"></a>第2章 一切都是对象</h2><h3 id="2-1-用引用操纵对象"><a href="#2-1-用引用操纵对象" class="headerlink" title="2.1 用引用操纵对象"></a>2.1 用引用操纵对象</h3><ul>
+          <h1 id="Java编程思想"><a href="#Java编程思想" class="headerlink" title="Java编程思想"></a>Java编程思想</h1><h2 id="第2章-一切都是对象"><a href="#第2章-一切都是对象" class="headerlink" title="第2章 一切都是对象"></a>第2章 一切都是对象</h2><h3 id="2-1-用引用操纵对象"><a href="#2-1-用引用操纵对象" class="headerlink" title="2.1 用引用操纵对象"></a>2.1 用引用操纵对象</h3><ul>
 <li>一切都被视为对象</li>
 <li>操纵的标志符实际上是对象的一个“引用”</li>
 <li>类比于，遥控器（引用）来操纵电视机（对象）。你拥有一个引用，并不需要有一个对象与之关联。</li>
@@ -341,79 +340,16 @@
 <li><strong>常量存储</strong>。通常直接存放在程序代码内部</li>
 </ul>
 <h4 id="2-2-2-特例：基本类型"><a href="#2-2-2-特例：基本类型" class="headerlink" title="2.2.2 特例：基本类型"></a>2.2.2 特例：基本类型</h4><ul>
-<li>不用new来创建变量，而是穿件一个并非是引用的”自动“变量。这个变量直接存储”值“，并置于堆栈中，因此更加高效。</li>
-<li>boolean,char,byte,short,int,long,float,double,void</li>
-</ul>
-<h4 id="2-2-3-Java中的数组"><a href="#2-2-3-Java中的数组" class="headerlink" title="2.2.3 Java中的数组"></a>2.2.3 Java中的数组</h4><h3 id="2-3-永远不需要销毁对象"><a href="#2-3-永远不需要销毁对象" class="headerlink" title="2.3 永远不需要销毁对象"></a>2.3 永远不需要销毁对象</h3><h4 id="2-3-1-作用域"><a href="#2-3-1-作用域" class="headerlink" title="2.3.1 作用域"></a>2.3.1 作用域</h4><h4 id="2-3-2-对象的作用域"><a href="#2-3-2-对象的作用域" class="headerlink" title="2.3.2 对象的作用域"></a>2.3.2 对象的作用域</h4><h3 id="2-4-创建新的数据类型：类"><a href="#2-4-创建新的数据类型：类" class="headerlink" title="2.4 创建新的数据类型：类"></a>2.4 创建新的数据类型：类</h3><p>class关键字</p>
-<h4 id="2-4-1-字段与方法"><a href="#2-4-1-字段与方法" class="headerlink" title="2.4.1 字段与方法"></a>2.4.1 字段与方法</h4><ul>
-<li><p>一旦定义了一个类（在Java中你所做的全部工作就是<strong>定义类</strong>，<strong>产生</strong>哪些类的<strong>对象</strong>，以及<strong>发送消息</strong>给这些对象），就可以在类中设置两种类型的元素：<strong>字段</strong>（有时被称为数据成员）和<strong>方法</strong>（有时被称作成员函数）</p>
+<li><p>不用new来创建变量，而是穿件一个并非是引用的”自动“变量。这个变量直接存储”值“，并置于堆栈中，因此更加高效。</p>
 </li>
-<li><p><strong>基本成员默认值</strong></p>
-</li>
-<li><ul>
-<li>若<strong>类中某个成员</strong>是基本数据类型，即使没有进行初始化，Java也会确保它获得一个默认值。</li>
-<li>当变量作为<strong>类的成员使用时</strong>，Java才确保给定其默认值，但上述确保初始化的方法<strong>并不适用于“局部”变量</strong>。</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-5-方法、参数和返回值"><a href="#2-5-方法、参数和返回值" class="headerlink" title="2.5 方法、参数和返回值"></a>2.5 方法、参数和返回值</h3><h4 id="2-5-1-参数列表"><a href="#2-5-1-参数列表" class="headerlink" title="2.5.1 参数列表"></a>2.5.1 参数列表</h4><ul>
-<li>一旦将方法参数s传递给此方法，就可以把它当作其他对象一样进行处理（可以给他传递消息）</li>
-<li>若返回类型是void，return关键字的作用只是用来退出方法。因此，没有必要到方法结束时才离开，可以在任何地方返回。但如果不是void，那么无论在何处返回，编译器都会强制返回一个正确类型的返回值</li>
-</ul>
-<h3 id="2-6-构建一个Java程序"><a href="#2-6-构建一个Java程序" class="headerlink" title="2.6 构建一个Java程序"></a>2.6 构建一个Java程序</h3><h4 id="2-6-1-名字可见性"><a href="#2-6-1-名字可见性" class="headerlink" title="2.6.1 名字可见性"></a>2.6.1 名字可见性</h4><ul>
-<li>库名要以com.mindview.utility.<em>*</em></li>
-</ul>
-<h4 id="2-6-2-运用其他构件"><a href="#2-6-2-运用其他构件" class="headerlink" title="2.6.2 运用其他构件"></a>2.6.2 运用其他构件</h4><ul>
-<li>import</li>
-</ul>
-<h4 id="2-6-3-static关键字"><a href="#2-6-3-static关键字" class="headerlink" title="2.6.3 static关键字"></a>2.6.3 static关键字</h4><ul>
-<li>ClassName.methodName()</li>
-</ul>
-<h3 id="2-7-你的第一个Java程序"><a href="#2-7-你的第一个Java程序" class="headerlink" title="2.7 你的第一个Java程序"></a>2.7 你的第一个Java程序</h3><h3 id="2-8-注释和嵌入式文档"><a href="#2-8-注释和嵌入式文档" class="headerlink" title="2.8 注释和嵌入式文档"></a>2.8 注释和嵌入式文档</h3><h3 id="2-9-编码风格"><a href="#2-9-编码风格" class="headerlink" title="2.9 编码风格"></a>2.9 编码风格</h3><ul>
-<li>驼峰风格</li>
-</ul>
-<h3 id="2-10-总结"><a href="#2-10-总结" class="headerlink" title="2.10 总结"></a>2.10 总结</h3><h2 id="第3章-操作符"><a href="#第3章-操作符" class="headerlink" title="第3章 操作符"></a>第3章 操作符</h2><h2 id="第4章-控制执行流程"><a href="#第4章-控制执行流程" class="headerlink" title="第4章 控制执行流程"></a>第4章 控制执行流程</h2><h2 id="第12章-通过异常处理错误"><a href="#第12章-通过异常处理错误" class="headerlink" title="第12章 通过异常处理错误"></a>第12章 通过异常处理错误</h2><h3 id="12-1-基本异常"><a href="#12-1-基本异常" class="headerlink" title="12.1 基本异常"></a>12.1 基本异常</h3><ul>
-<li><strong>异常情形：是指阻止当前方法或作用域继续执行的问题</strong></li>
-</ul>
-<h4 id="12-1-1-异常参数"><a href="#12-1-1-异常参数" class="headerlink" title="12.1.1 异常参数"></a>12.1.1 异常参数</h4><ul>
-<li>标准异常类都有两个构造器：一个是<strong>默认构造器</strong>，另一个是<strong>接受字符串作为参数，以便把相关信息放入异常对象的构造器</strong></li>
-<li>异常返回的“地点”与普通方法调用返回的“地点”完全不同 。（异常将在一个恰当的异常处理程序中得到解决，它的位置可能离异常被抛出的位置很远，也可能会跨越方法调用栈的很多层次）</li>
-</ul>
-<h3 id="12-2-捕获异常"><a href="#12-2-捕获异常" class="headerlink" title="12.2 捕获异常"></a>12.2 捕获异常</h3><h4 id="12-2-1-try块"><a href="#12-2-1-try块" class="headerlink" title="12.2.1 try块"></a>12.2.1 try块</h4><h4 id="12-2-2-异常处理程序（catch）"><a href="#12-2-2-异常处理程序（catch）" class="headerlink" title="12.2.2 异常处理程序（catch）"></a>12.2.2 异常处理程序（catch）</h4><ul>
-<li>```java<br>try{<br>//code that might generate exceptions<br>}catch(Type1 id1){<br>//handle exceptions of type1<br>}catch(Type2 id2){<br>//handle exceptions of type2<br>}catch(Type3 id3){<br>//handle exceptions of type3<br>}<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  catch子句（异常处理程序）必须紧跟在try块之后</span><br><span class="line"></span><br><span class="line">+ **终止与恢复**</span><br><span class="line"></span><br><span class="line">  + 终止模型：一旦异常被抛出，就表明错误已无法挽回，也不能回来继续执行</span><br><span class="line">  + 恢复模型：异常处理程序的工作是修正错误，然后重新尝试调用出问题的方法，并认为第二次能成功</span><br><span class="line">  + **一般使用“终止模型”**</span><br><span class="line"></span><br><span class="line">### 12.3 创建自定义异常</span><br><span class="line"></span><br><span class="line">+ 要自己定义异常类，必须继承已有的异常类，最好选择意思相近的异常类进行继承。</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;java</span><br><span class="line">class MyException extends Exception&#123;</span><br><span class="line">    public MyException()&#123;&#125;</span><br><span class="line">    public MyException(String msg)&#123;super(msg);&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class FullConstructors &#123;</span><br><span class="line">    public static void f() throws MyException&#123;</span><br><span class="line">        System.out.println(&quot;Throwing MyException from f()&quot;);</span><br><span class="line">        throw new MyException();</span><br><span class="line">    &#125;</span><br><span class="line">    public static void g() throws MyException&#123;</span><br><span class="line">        System.out.println(&quot;Throwing MyException from g()&quot;);</span><br><span class="line">        throw new MyException(&quot;Originated in g()&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        try&#123;</span><br><span class="line">            f();</span><br><span class="line">        &#125;catch (MyException e)&#123;</span><br><span class="line">            e.printStackTrace(System.out);</span><br><span class="line">        &#125;</span><br><span class="line">        try&#123;</span><br><span class="line">            g();</span><br><span class="line">        &#125;catch (MyException e)&#123;</span><br><span class="line">            &#x2F;&#x2F;printStackTrace()方法将会打印出&quot;从方法调用处直到异常抛出处&quot;的方法调用序列</span><br><span class="line">            &#x2F;&#x2F;默认值是System.err,输出到标准错误流中</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="12-3-1-异常与记录日志"><a href="#12-3-1-异常与记录日志" class="headerlink" title="12.3.1 异常与记录日志"></a>12.3.1 异常与记录日志</h4><ul>
-<li>Java.util.logging</li>
-<li>Throwable 的getMessage()方法，产生更详细的信息，有点类似于toString()方法。</li>
-</ul>
-<h3 id="12-4-异常说明"><a href="#12-4-异常说明" class="headerlink" title="12.4 异常说明"></a>12.4 异常说明</h3><ul>
-<li>异常说明使用附加的关键字<strong>throws</strong>，后面接一个所有潜在异常类型的列表。</li>
-</ul>
-<h3 id="12-5-捕获所有异常"><a href="#12-5-捕获所有异常" class="headerlink" title="12.5 捕获所有异常"></a>12.5 捕获所有异常</h3><ul>
-<li><p>通过捕获异常类型的基类<strong>Exception</strong>做到这一点</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">	<span class="comment">//......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="12-5-1-栈轨迹"><a href="#12-5-1-栈轨迹" class="headerlink" title="12.5.1 栈轨迹"></a>12.5.1 栈轨迹</h4><ul>
-<li>getStackTrace()方法返回栈轨迹（数组形式）</li>
-</ul>
-<h3 id="12-6-Java标准异常"><a href="#12-6-Java标准异常" class="headerlink" title="12.6 Java标准异常"></a>12.6 Java标准异常</h3><ul>
-<li><strong>Throwable</strong>这个Java类被用来表示任何可以作为异常被抛出的类</li>
-<li>Throwable被分为两种类型：<ul>
-<li>Error</li>
-<li>Exception（Java程序猿关心的异常）</li>
-</ul>
-</li>
-</ul>
-<h3 id="12-7-使用finally进行清理"><a href="#12-7-使用finally进行清理" class="headerlink" title="12.7 使用finally进行清理"></a>12.7 使用finally进行清理</h3><h4 id="12-7-1-finally用来做什么"><a href="#12-7-1-finally用来做什么" class="headerlink" title="12.7.1 finally用来做什么"></a>12.7.1 finally用来做什么</h4><ul>
-<li>无论try块里发生了什么，内存总能够得到释放。（<strong>finally总会得到执行</strong>）</li>
-</ul>
-<h4 id="12-7-2-在return中使用finally"><a href="#12-7-2-在return中使用finally" class="headerlink" title="12.7.2 在return中使用finally"></a>12.7.2 在return中使用finally</h4><ul>
-<li>从输出可以看出，在finally类内部，从何处返回无关紧要（<strong>finally块总会得到执行</strong>）</li>
-</ul>
-
-          
+<li><p>boolean,char,byte,short,int,long,float,double,void</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/13/thinkingInJava/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
