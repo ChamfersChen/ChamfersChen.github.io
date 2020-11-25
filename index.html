@@ -258,6 +258,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/25/java-take-note/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Chamfers">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Chamfers' Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/25/java-take-note/" itemprop="url">java_take_note</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-25T20:33:31+08:00">
+                2020-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="Java要点摘记"><a href="#Java要点摘记" class="headerlink" title="Java要点摘记"></a>Java要点摘记</h1><h2 id="1、回调机制"><a href="#1、回调机制" class="headerlink" title="1、回调机制"></a>1、回调机制</h2><ul>
+<li><strong>定义回调接口<code>CallBack</code></strong></li>
+<li><strong>类A实现回调接口<code>CallBack</code>，同时持有类B的对象b</strong></li>
+<li><strong>类B中有方法<code>method（CallBack cb）</code></strong></li>
+<li><strong>由于A中持有B的对象，所以A可以调用B的method方法，并将自身作为参数传入method（因为A实现了CallBack接口，所以可以传入）。</strong></li>
+<li><strong>method方法执行完毕后，调用回调方法。</strong></li>
+</ul>
+<h3 id="1-1-不带参数回调-酒店顾客例子"><a href="#1-1-不带参数回调-酒店顾客例子" class="headerlink" title="1.1 不带参数回调(酒店顾客例子)"></a>1.1 不带参数回调(酒店顾客例子)</h3><h4 id="1-1-1-首先定义回调接口"><a href="#1-1-1-首先定义回调接口" class="headerlink" title="1.1.1 首先定义回调接口"></a>1.1.1 首先定义回调接口</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> callback;</span><br><span class="line"><span class="comment">//回调接口</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">CallBack</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beWakedUp</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="1-1-2-接着是顾客类-顾客类实现回调接口"><a href="#1-1-2-接着是顾客类-顾客类实现回调接口" class="headerlink" title="1.1.2 接着是顾客类 (顾客类实现回调接口)"></a>1.1.2 <strong>接着是顾客类</strong> (顾客类实现回调接口)</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> callback;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Customer</span> <span class="keyword">implements</span> <span class="title">CallBack</span> </span>&#123;</span><br><span class="line">    <span class="comment">//顾客同时持有酒店类的对象，后面定义</span></span><br><span class="line">    <span class="keyword">private</span> Hotel hotel;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Customer</span><span class="params">(Hotel hotel)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.hotel = hotel;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">beWakedUp</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"被叫醒了"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 客户预约使用酒店的叫醒功能</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bookWakeService</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        hotel.wakeService(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 省略get set</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/25/java-take-note/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/13/thinkingInJava/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1468,143 +1600,13 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/SVM-arithmatic-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Chamfers">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Chamfers' Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/05/SVM-arithmatic-1/" itemprop="url">SVM_arithmatic</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-05T14:57:08+08:00">
-                2020-07-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h2 id="一、没有免费午餐定理（No-Free-Lunch-Theorem）"><a href="#一、没有免费午餐定理（No-Free-Lunch-Theorem）" class="headerlink" title="一、没有免费午餐定理（No Free Lunch Theorem）"></a><strong>一、没有免费午餐定理（No Free Lunch Theorem）</strong></h2><p>​    如果我们不对特征空间有先验假设，则所有算法的表现是一样的。</p>
-<p>e.g.</p>
-<img src="/2020/07/05/SVM-arithmatic-1/nofreelunch.jpg" class="" title="[实例]">
-<p>如果不假定预测为哪一类的概率更大，则出现各类的概率一样，那么，预测为“⭕️”获“❌”都合理。</p>
-<h2 id="二、支持向量机（Support-Vector-Machine）"><a href="#二、支持向量机（Support-Vector-Machine）" class="headerlink" title="二、支持向量机（Support Vector Machine）"></a>二、支持向量机（Support Vector Machine）</h2><img src="/2020/07/05/SVM-arithmatic-1/linearmodle.jpg" class="" title="[SVM]">
-<p>定义：</p>
-<p>1、训练数据及标签$(x_1,y_1),(x_2,y_2)…(x_N,y_N)$。$x_i$为列向量，$y_i$为标签取值为+1或-1。</p>
-<p>2、线性模型：<center>$(\omega,b)$</center><center>$\omega ^T+b=0$（超平面）</center></p>
-<p>其中$\omega$为列向量，$b$为常数。</p>
-<p>3、一个训练集线性可分是指：${(x_i,y_i)}_{i=1…N},\exists (\omega,b)$使得对$\forall i=1…N$有</p>
-<center>a、若$y_i=+1$则$\omega ^Tx_i+b>=0$</center><center>b、若$y_i=-1$则$\omega ^Tx_i+b<0$</center><center>$\Rightarrow y_i[\omega^Tx_i+b]>=0$</center>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/07/05/SVM-arithmatic-1/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">&lt;i class&#x3D;&quot;fa fa-angle-right&quot;&gt;&lt;&#x2F;i&gt;</a>
+  </nav>
+
 
 
           </div>
@@ -1652,7 +1654,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

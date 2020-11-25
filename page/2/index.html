@@ -79,17 +79,12 @@
 
 
 
-<meta property="og:type" content="article">
-<meta property="og:title" content="Model Evaluation">
-<meta property="og:url" content="http://yoursite.com/2020/07/15/Model-Evaluation/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Chamfers&#39; Blog">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Chamfers&#39; Blog">
-<meta property="og:image" content="http://yoursite.com/2020/07/15/Model-Evaluation/Model.jpg">
-<meta property="og:image" content="http://yoursite.com/2020/07/15/Model-Evaluation/Model2.jpg">
-<meta property="article:published_time" content="2020-07-15T08:15:10.000Z">
-<meta property="article:modified_time" content="2020-10-18T07:57:23.500Z">
 <meta property="article:author" content="Chamfers">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/2020/07/15/Model-Evaluation/Model.jpg">
 
 
 
@@ -119,13 +114,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/07/15/Model-Evaluation/"/>
+  <link rel="canonical" href="http://yoursite.com/page/2/"/>
 
 
 
 
 
-  <title>Model Evaluation | Chamfers' Blog</title>
+  <title>Chamfers' Blog</title>
   
 
 
@@ -144,7 +139,8 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
+  page-home">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,9 +243,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -262,7 +258,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/15/Model-Evaluation/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/05/SVM-arithmatic-1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Chamfers">
@@ -279,7 +275,9 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Model Evaluation</h1>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/05/SVM-arithmatic-1/" itemprop="url">SVM_arithmatic</a></h1>
         
 
         <div class="post-meta">
@@ -291,8 +289,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-15T16:15:10+08:00">
-                2020-07-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-07-05T14:57:08+08:00">
+                2020-07-05
               </time>
             
 
@@ -329,10 +327,26 @@
       
 
       
-        <img src="/2020/07/15/Model-Evaluation/Model.jpg" class="" title="[Model Evaluation]">
-<a id="more"></a>
-<img src="/2020/07/15/Model-Evaluation/Model2.jpg" class="" title="[Model Evaluation]">
-
+        
+          <h2 id="一、没有免费午餐定理（No-Free-Lunch-Theorem）"><a href="#一、没有免费午餐定理（No-Free-Lunch-Theorem）" class="headerlink" title="一、没有免费午餐定理（No Free Lunch Theorem）"></a><strong>一、没有免费午餐定理（No Free Lunch Theorem）</strong></h2><p>​    如果我们不对特征空间有先验假设，则所有算法的表现是一样的。</p>
+<p>e.g.</p>
+<img src="/2020/07/05/SVM-arithmatic-1/nofreelunch.jpg" class="" title="[实例]">
+<p>如果不假定预测为哪一类的概率更大，则出现各类的概率一样，那么，预测为“⭕️”获“❌”都合理。</p>
+<h2 id="二、支持向量机（Support-Vector-Machine）"><a href="#二、支持向量机（Support-Vector-Machine）" class="headerlink" title="二、支持向量机（Support Vector Machine）"></a>二、支持向量机（Support Vector Machine）</h2><img src="/2020/07/05/SVM-arithmatic-1/linearmodle.jpg" class="" title="[SVM]">
+<p>定义：</p>
+<p>1、训练数据及标签$(x_1,y_1),(x_2,y_2)…(x_N,y_N)$。$x_i$为列向量，$y_i$为标签取值为+1或-1。</p>
+<p>2、线性模型：<center>$(\omega,b)$</center><center>$\omega ^T+b=0$（超平面）</center></p>
+<p>其中$\omega$为列向量，$b$为常数。</p>
+<p>3、一个训练集线性可分是指：${(x_i,y_i)}_{i=1…N},\exists (\omega,b)$使得对$\forall i=1…N$有</p>
+<center>a、若$y_i=+1$则$\omega ^Tx_i+b>=0$</center><center>b、若$y_i=-1$则$\omega ^Tx_i+b<0$</center><center>$\Rightarrow y_i[\omega^Tx_i+b]>=0$</center>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/07/05/SVM-arithmatic-1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
       
     </div>
     
@@ -349,32 +363,12 @@
       
 
       
-      
+
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2020/07/14/SVMsummary/" rel="next" title="SVMsummary">
-                <i class="fa fa-chevron-left"></i> SVMsummary
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/07/23/Neural-Network/" rel="prev" title="Neural Network">
-                Neural Network <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
       
-
-      
+        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -384,11 +378,14 @@
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -396,10 +393,6 @@
 
 
           
-
-  
-
-
 
         </div>
         
@@ -607,10 +600,6 @@
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
 
   
 
