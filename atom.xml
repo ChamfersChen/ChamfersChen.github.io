@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog of TheChef</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-09-08T17:27:01.237Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>TheChef</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>技术点</title>
+    <link href="http://example.com/2023/09/09/%E6%8A%80%E6%9C%AF%E7%82%B9/"/>
+    <id>http://example.com/2023/09/09/%E6%8A%80%E6%9C%AF%E7%82%B9/</id>
+    <published>2023-09-08T17:21:16.000Z</published>
+    <updated>2023-09-08T17:27:01.237Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h2 id="Pdb"><a href="#Pdb" class="headerlink" title="Pdb"></a>Pdb</h2><h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h1 id="Flask"><a href="#Flask" class="headerlink" title="Flask"></a>Flask</h1><h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;Python&quot;&gt;&lt;a href=&quot;#Python&quot; class=&quot;headerlink&quot; title=&quot;Python&quot;&gt;&lt;/a&gt;Python&lt;/h1&gt;&lt;h2 id=&quot;Pdb&quot;&gt;&lt;a href=&quot;#Pdb&quot; class=&quot;headerlink&quot; title=&quot;Pdb</summary>
+      
+    
+    
+    
+    <category term="技术积累" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/"/>
+    
+    
+    <category term="编程" scheme="http://example.com/tags/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Python" scheme="http://example.com/tags/Python/"/>
+    
+    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
+    
+    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
+    
+    <category term="Flask" scheme="http://example.com/tags/Flask/"/>
+    
+    <category term="Vim" scheme="http://example.com/tags/Vim/"/>
+    
+  </entry>
+  
+</feed>
