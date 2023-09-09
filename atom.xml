@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-09-08T17:35:51.555Z</updated>
+  <updated>2023-09-09T10:09:32.662Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -17,33 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>技术点</title>
-    <link href="http://example.com/2023/09/09/%E6%8A%80%E6%9C%AF%E7%82%B9/"/>
-    <id>http://example.com/2023/09/09/%E6%8A%80%E6%9C%AF%E7%82%B9/</id>
-    <published>2023-09-08T17:21:16.000Z</published>
-    <updated>2023-09-08T17:35:51.555Z</updated>
+    <title>[2023-09-09] Python #1:Pdb调试器</title>
+    <link href="http://example.com/2023/09/09/2023-09-09-Python-1-Pdb%E8%B0%83%E8%AF%95%E5%99%A8/"/>
+    <id>http://example.com/2023/09/09/2023-09-09-Python-1-Pdb%E8%B0%83%E8%AF%95%E5%99%A8/</id>
+    <published>2023-09-09T09:56:09.000Z</published>
+    <updated>2023-09-09T10:09:32.662Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h2 id="Pdb"><a href="#Pdb" class="headerlink" title="Pdb"></a>Pdb</h2><span id="more"></span><h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h1 id="Flask"><a href="#Flask" class="headerlink" title="Flask"></a>Flask</h1><h1 id="Vim"><a href="#Vim" class="headerlink" title="Vim"></a>Vim</h1>]]></content>
+    <content type="html"><![CDATA[<h1 id="Pdb用法"><a href="#Pdb用法" class="headerlink" title="Pdb用法"></a>Pdb用法</h1><ul><li><strong>非侵入式方法</strong>（不用额外修改源代码，在命令行下直接运行就能调试）</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -m pdb filename.py</span><br></pre></td></tr></table></figure><ul><li><strong>侵入式方法</strong>（需要在被调试的代码中添加一行代码然后再正常运行代码）</li></ul><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pdb;pdb.set_trace()</span><br><span class="line"><span class="comment"># or</span></span><br><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line">pdb.set_trace()</span><br></pre></td></tr></table></figure><span id="more"></span><h1 id="Pdb常用命令"><a href="#Pdb常用命令" class="headerlink" title="Pdb常用命令"></a>Pdb常用命令</h1><table><thead><tr><th align="left">完整命令</th><th align="left">命令</th><th align="left">解释</th><th>说明</th></tr></thead><tbody><tr><td align="left">list</td><td align="left">l</td><td align="left">查看当前行的代码段</td><td>查看当前位置前后11行源代码（多次会翻页），当前位置在代码中会用–&gt;这个符号标出来</td></tr><tr><td align="left"></td><td align="left">ll</td><td align="left">查看当前函数或框架的所有源代码</td><td></td></tr><tr><td align="left">break</td><td align="left">b</td><td align="left">设置断点</td><td></td></tr><tr><td align="left"></td><td align="left">b lineno</td><td align="left">在lineno行设置断点</td><td></td></tr><tr><td align="left"></td><td align="left">b filename:lineno</td><td align="left">filename文件名，在filename的lineno行设置断点</td><td></td></tr><tr><td align="left"></td><td align="left">b functionname</td><td align="left">在函数名执行的第一行设置断点</td><td></td></tr><tr><td align="left">tbreak</td><td align="left">\</td><td align="left">临时断点，执行一次后时自动删除（这就是它被称为临时断点的原因）</td><td>参数同break，b</td></tr><tr><td align="left">clear</td><td align="left">cl</td><td align="left">清除所有断点</td><td>1.不带参数用于清除所有断点，会提示确认（包括临时断点）<br/>2.带参数则清除指定文件行或当前文件指定序号的断点</td></tr><tr><td align="left"></td><td align="left">cl filename:lineno</td><td align="left">清除指定文件中的指定行号的断点</td><td>filename: 文件名<br/>lineno: 断点行号</td></tr><tr><td align="left"></td><td align="left">cl bpnumber [bpnumber …]</td><td align="left">清除当前文件中的一个或多个断点</td><td>bpnumber: break point number 断点行号。bpnumber 断点序号（多个以空格分隔）</td></tr><tr><td align="left">print</td><td align="left">p x</td><td align="left">打印变量x的值</td><td></td></tr><tr><td align="left">step</td><td align="left">s</td><td align="left">进入函数（能够进入函数体）（进入 for 循环用 next 而不是用 step）</td><td></td></tr><tr><td align="left">next</td><td align="left">n</td><td align="left">执行下一行（不会进入函数体）</td><td></td></tr><tr><td align="left">return</td><td align="left">r</td><td align="left">执行下一行（在函数中时会直接执行到函数返回处）</td><td></td></tr><tr><td align="left">continue</td><td align="left">c</td><td align="left">持续执行下去，直到遇到一个断点</td><td></td></tr><tr><td align="left">until</td><td align="left">unt lineno</td><td align="left">持续执行直到运行到指定行（或遇到断点）</td><td></td></tr><tr><td align="left">jump</td><td align="left">j lineno</td><td align="left">直接跳转到指定行（注意，被跳过的代码不执行）</td><td></td></tr><tr><td align="left">up</td><td align="left">u</td><td align="left">返回到上个调用点（不是上一行）</td><td></td></tr><tr><td align="left">args</td><td align="left">a</td><td align="left">在函数中时打印函数的参数和参数的值</td><td></td></tr><tr><td align="left">whatis</td><td align="left">whatis expression</td><td align="left">打印表达式的类型，常用来打印变量值</td><td></td></tr><tr><td align="left">where</td><td align="left">w</td><td align="left">打印堆栈信息，最新的帧在最底部。箭头表示当前帧。</td><td></td></tr><tr><td align="left">!</td><td align="left">\</td><td align="left">在pdb中执行语句</td><td></td></tr><tr><td align="left">exit</td><td align="left">q</td><td align="left">中止调试，退出程序</td><td></td></tr><tr><td align="left">help</td><td align="left">\</td><td align="left">帮助</td><td></td></tr></tbody></table>]]></content>
     
     
-    <summary type="html">&lt;h1 id=&quot;Python&quot;&gt;&lt;a href=&quot;#Python&quot; class=&quot;headerlink&quot; title=&quot;Python&quot;&gt;&lt;/a&gt;Python&lt;/h1&gt;&lt;h2 id=&quot;Pdb&quot;&gt;&lt;a href=&quot;#Pdb&quot; class=&quot;headerlink&quot; title=&quot;Pdb&quot;&gt;&lt;/a&gt;Pdb&lt;/h2&gt;</summary>
+    <summary type="html">&lt;h1 id=&quot;Pdb用法&quot;&gt;&lt;a href=&quot;#Pdb用法&quot; class=&quot;headerlink&quot; title=&quot;Pdb用法&quot;&gt;&lt;/a&gt;Pdb用法&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;非侵入式方法&lt;/strong&gt;（不用额外修改源代码，在命令行下直接运行就能调试）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;python3 -m pdb filename.py&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;侵入式方法&lt;/strong&gt;（需要在被调试的代码中添加一行代码然后再正常运行代码）&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; pdb;pdb.set_trace()&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# or&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;import&lt;/span&gt; pdb&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;pdb.set_trace()&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
     
     
     
     <category term="技术积累" scheme="http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/"/>
     
     
-    <category term="编程" scheme="http://example.com/tags/%E7%BC%96%E7%A8%8B/"/>
+    <category term="Code" scheme="http://example.com/tags/Code/"/>
     
     <category term="Python" scheme="http://example.com/tags/Python/"/>
-    
-    <category term="Docker" scheme="http://example.com/tags/Docker/"/>
-    
-    <category term="Linux" scheme="http://example.com/tags/Linux/"/>
-    
-    <category term="Flask" scheme="http://example.com/tags/Flask/"/>
-    
-    <category term="Vim" scheme="http://example.com/tags/Vim/"/>
     
   </entry>
   
