@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2023-09-22T15:54:34.586Z</updated>
+  <updated>2023-12-27T14:58:25.941Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>[2023-12-27] #2:Flask简单使用</title>
+    <link href="http://example.com/2023/12/27/2023-12-27-2-Flask%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/"/>
+    <id>http://example.com/2023/12/27/2023-12-27-2-Flask%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/</id>
+    <published>2023-12-27T14:58:25.000Z</published>
+    <updated>2023-12-27T14:58:25.941Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>[2023-09-22] Docker #3:Docker容器操作</title>
