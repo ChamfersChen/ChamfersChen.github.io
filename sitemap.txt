@@ -12,4 +12,5 @@ http://example.com/tags/Linux/
 http://example.com/tags/Code/
 http://example.com/tags/Python/
 http://example.com/tags/Docker/
+http://example.com/tags/Flask/
 http://example.com/categories/%E6%8A%80%E6%9C%AF%E7%A7%AF%E7%B4%AF/
