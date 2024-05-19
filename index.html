@@ -192,7 +192,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-05-20 01:12:01" itemprop="dateModified" datetime="2024-05-20T01:12:01+08:00">2024-05-20</time>
+                <time title="修改时间：2024-05-20 01:15:53" itemprop="dateModified" datetime="2024-05-20T01:15:53+08:00">2024-05-20</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -218,155 +218,14 @@
           <h1 id="检索增强生成（RAG）"><a href="#检索增强生成（RAG）" class="headerlink" title="检索增强生成（RAG）"></a>检索增强生成（RAG）</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>检索增强生成（Retrieval Augmented Generation），简称 RAG，已经成为当前最火热的LLM应用方案。</p>
 <p><strong>检索增强生成 (RAG) 是一种使用来自私有或专有数据源的信息来辅助文本生成的技术。</strong>它将检索模型（设计用于搜索大型数据集或知识库）和生成模型（例如大型语言模型 (LLM)，此类模型会使用检索到的信息生成可供阅读的文本回复）结合在一起。</p>
 <p>通过从更多数据源添加背景信息，以及通过训练来补充 LLM 的原始知识库，检索增强生成能够提高搜索体验的相关性。这能够改善大型语言模型的输出，但又无需重新训练模型。额外信息源的范围很广，从训练 LLM 时并未用到的互联网上的新信息，到专有商业背景信息，或者属于企业的机密内部文档，都会包含在内。</p>
-<h2 id="为什么是RAG"><a href="#为什么是RAG" class="headerlink" title="为什么是RAG"></a>为什么是RAG</h2><p>大模型的能力很强，但是当我们将大模型应用于实际业务场景时会发现，通用的基础大模型基本无法满足我们的实际业务需求，主要有以下几方面原因：</p>
-<ul>
-<li><strong>知识的局限性</strong>：模型自身的知识完全源于它的训练数据，而现有的主流大模型（ChatGPT、文心一言、通义千问…）的训练集基本都是构建于网络公开的数据，对于一些实时性的、非公开的或离线的数据是无法获取到的，这部分知识也就无从具备。</li>
-<li><strong>幻觉问题</strong>：所有的AI模型的底层原理都是基于数学概率，其模型输出实质上是一系列数值运算，大模型也不例外，所以它有时候会一本正经地胡说八道，尤其是在大模型自身不具备某一方面的知识或不擅长的场景。而这种幻觉问题的区分是比较困难的，因为它要求使用者自身具备相应领域的知识。</li>
-<li><strong>数据安全性</strong>：对于企业来说，数据安全至关重要，没有企业愿意承担数据泄露的风险，将自身的私域数据上传第三方平台进行训练。这也导致完全依赖通用大模型自身能力的应用方案不得不在数据安全和效果方面进行取舍。</li>
-</ul>
-<p>而RAG是解决上述问题的一套有效方案。</p>
-<p>一句话总结：<strong>RAG（中文为检索增强生成） &#x3D; 检索技术 + LLM 提示</strong>。例如，我们向 LLM 提问一个问题（answer），RAG 从各种数据源检索相关的信息，并将检索到的信息和问题（answer）注入到 LLM 提示中，LLM 最后给出答案。</p>
-<h2 id="RAG历史简述"><a href="#RAG历史简述" class="headerlink" title="RAG历史简述"></a>RAG历史简述</h2><p>RAG 是2023年基于 LLM 的系统中最受欢迎的架构。许多产品基于 RAG 构建，从基于 web 搜索引擎和 LLM 的问答服务到使用私有数据的chat应用程序。</p>
-<p>尽管在2019年，<a href="https://link.zhihu.com/?target=https://faiss.ai/">Faiss</a> 就实现了基于嵌入的向量搜索技术，但是 RAG 推动了<strong>向量搜索</strong>领域的发展。比如 <a href="https://link.zhihu.com/?target=https://github.com/chroma-core/chroma">chroma</a>、<a href="https://link.zhihu.com/?target=https://weaviate.io/">weaviate.io</a> 和 <a href="https://link.zhihu.com/?target=https://www.pinecone.io/">pinecone</a> 这些基于开源搜索索引引擎（主要是 faiss 和 <a href="https://link.zhihu.com/?target=https://github.com/nmslib/nmslib">nmslib</a>）向量数据库初创公司，最近增加了输入文本的额外存储和其他工具。</p>
-<img src="/2024/05/19/2024-05-19-LLM-RAG/rag.png" class="" title="RAG workflow">
-
-<p><img src="/Users/thechef/repositories/thechef-blog/source/_posts/2024-05-19-LLM-RAG/rag.png" alt="img"></p>
-<p>在这个过程中，有两个主要步骤：<strong>语义搜索</strong>和<strong>生成输出</strong>。在语义搜索步骤中，希望从知识库中找到与我们要回答的查询最相关的部分内容。然后，在生成步骤中，将使用这些内容来生成响应。</p>
-<p>有两个最著名的基于 LLM 的管道和应用程序的开源库——<a href="https://link.zhihu.com/?target=https://python.langchain.com/docs/get_started/introduction">LangChain</a> 和 <a href="https://link.zhihu.com/?target=https://docs.llamaindex.ai/en/stable/">LlamaIndex</a>，受 ChatGPT 发布的启发，它们在 2022 年 10 月和 11 月创立，并在 2023 年获得大量采用。</p>
-<h2 id="RAG架构"><a href="#RAG架构" class="headerlink" title="RAG架构"></a>RAG架构</h2><p>RAG的架构如图中所示，简单来讲，RAG就是通过检索获取相关的知识并将其融入Prompt，让大模型能够参考相应的知识从而给出合理回答。因此，可以将RAG的核心理解为“<strong>检索</strong>+<strong>生成</strong>”。</p>
-<ol>
-<li>前者主要是利用向量数据库的高效存储和检索能力，召回目标知识；</li>
-<li>后者则是利用大模型和Prompt工程，将召回的知识合理利用，生成目标答案。</li>
-</ol>
-<img src="/2024/05/19/2024-05-19-LLM-RAG/rag_framwork.png" class="" title="RAG framwork">
-
-<p><img src="/Users/thechef/repositories/thechef-blog/source/_posts/2024-05-19-LLM-RAG/rag_framwork.png" alt="img"></p>
-<p>完整的RAG应用流程主要包含两个阶段：</p>
-<ul>
-<li>数据准备阶段：数据提取—&gt;文本分割—&gt;向量化（embedding）—&gt;数据入库</li>
-<li>应用阶段：用户提问—&gt;数据检索（召回）—&gt;注入Prompt—&gt;LLM生成答案</li>
-</ul>
-<p>下面详细介绍一下各环节的技术细节和注意事项。</p>
-<h3 id="数据准备阶段："><a href="#数据准备阶段：" class="headerlink" title="数据准备阶段："></a>数据准备阶段：</h3><p>数据准备一般是一个离线的过程，主要是将私域数据向量化后构建索引并存入数据库的过程。主要包括：数据提取、文本分割、向量化、数据入库等环节。</p>
-<ul>
-<li><strong>数据提取</strong><ul>
-<li>数据加载：包括多格式数据加载、不同数据源获取等，根据数据自身情况，将数据处理为同一个范式。</li>
-<li>数据处理：包括数据过滤、压缩、格式化等。</li>
-<li>元数据获取：提取数据中关键信息，例如文件名、Title、时间等 。</li>
-</ul>
-</li>
-<li><strong>文本分割</strong>：<br>文本分割主要考虑两个因素：1）embedding模型的Tokens限制情况；2）语义完整性对整体的检索效果的影响。一些常见的文本分割方式如下：<ul>
-<li>句分割：以”句”的粒度进行切分，保留一个句子的完整语义。常见切分符包括：句号、感叹号、问号、换行符等。</li>
-<li>固定长度分割：根据embedding模型的token长度限制，将文本分割为固定长度（例如256&#x2F;512个tokens），这种切分方式会损失很多语义信息，一般通过在头尾增加一定冗余量来缓解。</li>
-</ul>
-</li>
-<li><strong>向量化（embedding）</strong>：</li>
-</ul>
-<p>向量化是一个将文本数据转化为向量矩阵的过程，该过程会直接影响到后续检索的效果。目前常见的embedding模型如表中所示，这些embedding模型基本能满足大部分需求，但对于特殊场景（例如涉及一些罕见专有词或字等）或者想进一步优化效果，则可以选择开源Embedding模型微调或直接训练适合自己场景的Embedding模型。</p>
-<table>
-<thead>
-<tr>
-<th>模型名称</th>
-<th>描述</th>
-<th>获取地址</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>ChatGPT-Embedding</td>
-<td>ChatGPT-Embedding由OpenAI公司提供，以接口形式调用。</td>
-<td><a href="https://link.zhihu.com/?target=https://platform.openai.com/docs/guides/embeddings/what-are-embeddings">https://platform.openai.com/docs/guides/embeddings/what-are-embeddings</a></td>
-</tr>
-<tr>
-<td>ERNIE-Embedding V1</td>
-<td>ERNIE-Embedding V1由百度公司提供，依赖于文心大模型能力，以接口形式调用。</td>
-<td><a href="https://link.zhihu.com/?target=https://cloud.baidu.com/doc/WENXINWORKSHOP/s/alj562vvu">https://cloud.baidu.com/doc/WENXINWORKSHOP/s/alj562vvu</a></td>
-</tr>
-<tr>
-<td>M3E</td>
-<td>M3E是一款功能强大的开源Embedding模型，包含m3e-small、m3e-base、m3e-large等多个版本，支持微调和本地部署。</td>
-<td><a href="https://link.zhihu.com/?target=https://huggingface.co/moka-ai/m3e-base">https://huggingface.co/moka-ai/m3e-base</a></td>
-</tr>
-<tr>
-<td>BGE</td>
-<td>BGE由北京智源人工智能研究院发布，同样是一款功能强大的开源Embedding模型，包含了支持中文和英文的多个版本，同样支持微调和本地部署。</td>
-<td><a href="https://link.zhihu.com/?target=https://huggingface.co/BAAI/bge-base-en-v1.5">https://huggingface.co/BAAI/bge-base-en-v1.5</a></td>
-</tr>
-</tbody></table>
-<ul>
-<li>数据入库：</li>
-</ul>
-<p>数据向量化后构建索引，并写入数据库的过程可以概述为数据入库过程，适用于RAG场景的数据库包括：FAISS、Chromadb、ES、milvus等。一般可以根据业务场景、硬件、性能需求等多因素综合考虑，选择合适的数据库。</p>
-<h3 id="应用阶段："><a href="#应用阶段：" class="headerlink" title="应用阶段："></a><strong>应用阶段：</strong></h3><p>在应用阶段，我们根据用户的提问，通过高效的检索方法，召回与提问最相关的知识，并融入Prompt；大模型参考当前提问和相关知识，生成相应的答案。关键环节包括：数据检索、注入Prompt等。</p>
-<ul>
-<li><strong>数据检索</strong></li>
-</ul>
-<p>常见的数据检索方法包括：相似性检索、全文检索等，根据检索效果，一般可以选择多种检索方式融合，提升召回率。</p>
-<ul>
-<li><p>相似性检索：即计算查询向量与所有存储向量的相似性得分，返回得分高的记录。常见的相似性计算方法包括：余弦相似性、欧氏距离、曼哈顿距离等。</p>
-<p>全文检索：全文检索是一种比较经典的检索方式，在数据存入时，通过关键词构建倒排索引；在检索时，通过关键词进行全文检索，找到对应的记录。</p>
-</li>
-<li><p><strong>注入Prompt</strong></p>
-<p>Prompt作为大模型的直接输入，是影响模型输出准确率的关键因素之一。在RAG场景中，Prompt一般包括任务描述、背景知识（检索得到）、任务指令（一般是用户提问）等，根据任务场景和大模型性能，也可以在Prompt中适当加入其他指令优化大模型的输出。一个简单知识问答场景的Prompt如下所示：</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">【任务描述】</span><br><span class="line">假如你是一个专业的客服机器人，请参考【背景知识】，回</span><br><span class="line">【背景知识】</span><br><span class="line">&#123;content&#125; // 数据检索得到的相关文本</span><br><span class="line">【问题】</span><br><span class="line">石头扫地机器人P10的续航时间是多久？</span><br></pre></td></tr></table></figure>
-
-<p>Prompt的设计只有方法、没有语法，比较依赖于个人经验，在实际应用过程中，往往需要根据大模型的实际输出进行针对性的Prompt调优。</p>
-</li>
-</ul>
-<h2 id="RAG进阶"><a href="#RAG进阶" class="headerlink" title="RAG进阶"></a>RAG进阶</h2><img src="/2024/05/19/2024-05-19-LLM-RAG/rag_adv.png" class="" title="RAG Advanced">
-
-<p><img src="/Users/thechef/repositories/thechef-blog/source/_posts/2024-05-19-LLM-RAG/rag_adv.png" alt="img"></p>
-<p>上图中绿色部分是我们接下来详细探讨的核心 RAG 技术。一张图并不能全部展示所有的高级 RAG 技术，比如我们这里省略了上文扩展技术。</p>
-<h3 id="1：分块-Chunking-向量化-Vectorisation"><a href="#1：分块-Chunking-向量化-Vectorisation" class="headerlink" title="1：分块 (Chunking) &amp; 向量化 (Vectorisation)"></a>1：分块 (Chunking) &amp; 向量化 (Vectorisation)</h3><p>首先我们需要为文档内容创建向量索引，然后在运行时搜索与查询向量余弦距离最近的向量索引，这样就可以找到与查询内容最接近语义的文档。</p>
-<p><strong>1.1 分块 (Chunking)</strong></p>
-<p>Transformer 模型具有固定的输入序列长度，即使输入上下文窗口很大，一个句子或几个句子的向量也比几页文本的向量更能代表其语义含义，因此对数据进行分块—— 将初始文档拆分为一定大小的块，而不会失去其含义。有许多文本拆分器实现能够完成此任务。</p>
-<p>块的大小是一个需要重点考虑的问题。块的大小取决于所使用的嵌入模型以及模型需要使用 token 的容量。如基于 BERT 的句子转换器，最多需要 512 个 token，OpenAI ada-002 能够处理更长的序列，如 8191 个 token，但这里的折衷是 LLM 有足够的上下文来推理，而不是足够具体的文本嵌入，以便有效地执行搜索。<a href="https://link.zhihu.com/?target=https://www.pinecone.io/learn/chunking-strategies/">有一项关于块大小选择的研究</a>。在 LlamaIndex 中，<a href="https://link.zhihu.com/?target=https://docs.llamaindex.ai/en/stable/api_reference/service_context/node_parser.html">NodeParser 类</a>很好支持解决这个问题，其中包含一些高级选项，例如定义自己的文本拆分器、元数据、节点&#x2F;块关系等。</p>
-<p><strong>1.2 向量化 (Vectorisation)</strong></p>
-<p>下一步是选择一个<strong>搜索优化的模型来嵌入我们的块</strong>。有很多选项，比如 <a href="https://link.zhihu.com/?target=https://huggingface.co/BAAI/bge-large-en-v1.5">bge-large</a> 或 <a href="https://link.zhihu.com/?target=https://huggingface.co/intfloat/multilingual-e5-large">E5 嵌入系列</a>。只需查看 <a href="https://link.zhihu.com/?target=https://huggingface.co/spaces/mteb/leaderboard">MTEB</a> 排行榜以获取最新更新即可。</p>
-<p>有关分块和向量化步骤的 end2end 实现，请查看 LlamaIndex 中完整数据摄取管道的<a href="https://link.zhihu.com/?target=https://docs.llamaindex.ai/en/latest/module_guides/loading/ingestion_pipeline/root.html%23">示例</a>。</p>
-<h3 id="2-搜索索引"><a href="#2-搜索索引" class="headerlink" title="2. 搜索索引"></a>2. 搜索索引</h3><p><strong>2.1 向量存储索引</strong></p>
-
-
-<p><img src="/Users/thechef/repositories/thechef-blog/source/_posts/2024-05-19-LLM-RAG/index_retriecal.png" alt="img"></p>
-<p><strong>RAG 管道的关键部分是搜索索引</strong>，它存储了我们在上一步中获得的向量化内容。最原始的实现是使用平面索引 — 查询向量和所有块向量之间的暴力计算距离。</p>
-<p><strong>为了实现1w+元素规模的高效检索，搜索索引</strong>应该采用<strong>向量索引</strong>，比如 <a href="https://link.zhihu.com/?target=https://faiss.ai/">faiss</a>、<a href="https://link.zhihu.com/?target=https://github.com/nmslib/nmslib">nmslib</a> 以及 <a href="https://link.zhihu.com/?target=https://github.com/spotify/annoy">annoy</a>。这些工具基于近似最近邻居算法，如聚类、树结构或<a href="https://link.zhihu.com/?target=https://www.pinecone.io/learn/series/faiss/hnsw/">HNSW</a>算法。</p>
-<p>此外，还有一些托管解决方案，如 OpenSearch、ElasticSearch 以及向量数据库，它们自动处理上面提到的数据摄取流程，例如<a href="https://link.zhihu.com/?target=https://www.pinecone.io/">Pinecone</a>、<a href="https://link.zhihu.com/?target=https://weaviate.io/">Weaviate</a>和<a href="https://link.zhihu.com/?target=https://www.trychroma.com/">Chroma</a>。</p>
-<p>取决于你的索引选择、数据和搜索需求，还可以<strong>存储元数据</strong>，并使用<strong>元数据过滤器</strong>来按照日期或来源等条件进行信息检索。</p>
-<p>LlamaIndex 支持多种<a href="https://link.zhihu.com/?target=https://docs.llamaindex.ai/en/latest/community/integrations/vector_stores.html">向量存储索引</a>，同时也兼容其他简单的索引类型，如列表索引、树索引和关键词表索引。关于这些索引，我们会在后续的融合检索部分详细介绍。</p>
-<p><strong>2.2 分层索引</strong></p>
-<img src="/2024/05/19/2024-05-19-LLM-RAG/hierarchical.png" class="" title="Hierarchical index retrieval">
-
-<p><img src="/Users/thechef/repositories/thechef-blog/source/_posts/2024-05-19-LLM-RAG/hierarchical.png" alt="img"></p>
-<p>在大型数据库的情况下，一个有效的方法是创建两个索引——一个由摘要组成，另一个由文档块组成，然后分两步进行搜索，首先通过摘要过滤掉相关文档，然后只在这个相关组内搜索。</p>
-<p><strong>2.3 假设性问题和 HyDE</strong></p>
-<p>另一种方法是让 <strong>LLM 为每个块生成一个问题，并将这些问题嵌入到向量中</strong>，在运行时对这个问题向量的索引执行查询搜索（将块向量替换为索引中的问题向量），然后在检索后路由到原始文本块并将它们作为 LLM 获取答案的上下文发送。</p>
-<p>这种方法提高了搜索质量，因为与实际块相比，<strong>查询和假设问题之间的语义相似性更高</strong>。</p>
-<p>还有一种叫做 <a href="https://link.zhihu.com/?target=http://boston.lti.cs.cmu.edu/luyug/HyDE/HyDE.pdf">HyDE</a> 的反向逻辑方法——你要求 LLM 在给定查询的情况下生成一个假设的响应，然后将其向量与查询向量一起使用来提高搜索质量。</p>
-<p><strong>2.4 内容增强</strong></p>
-<p>这里的内容是将相关的上下文组合起来供 LLM 推理，以检索较小的块以获得更好的搜索质量。</p>
-<p>有两种选择：一种是围绕较小的检索块的句子扩展上下文，另一种是递归地将文档拆分为多个较大的父块，其中包含较小的子块。</p>
-<p><a href="https://link.zhihu.com/?target=https://docs.llamaindex.ai/en/stable/examples/node_postprocessor/MetadataReplacementDemo.html">2.4.1 语句窗口检索</a>器</p>
-<p>在此方案中，文档中的每个句子都是单独嵌入的，这为上下文余弦距离搜索提供了极大的查询准确性。</p>
-<p>为了在获取最相关的单个句子后更好地推理找到的上下文，我们将上下文窗口扩展为检索到的句子前后的 k 个句子，然后将这个扩展的上下文发送到 LLM。</p>
-<img src="/2024/05/19/2024-05-19-LLM-RAG/sentence.png" class="" title="Sentence window retrieval">
-
-<p><img src="/Users/thechef/repositories/thechef-blog/source/_posts/2024-05-19-LLM-RAG/sentence.png" alt="img"></p>
-<p>绿色部分是在索引中搜索时发现的句子嵌入，整个黑色 + 绿色段落被送到 LLM 以扩大其上下文，同时根据提供的查询进行推理。</p>
-<p>2.4.2 <a href="https://link.zhihu.com/?target=https://docs.llamaindex.ai/en/latest/examples/retrievers/auto_merging_retriever.html">自动合并检索</a>器（或<a href="https://link.zhihu.com/?target=https://python.langchain.com/docs/modules/data_connection/retrievers/parent_document_retriever">父文档检索</a>器)</p>
-<p>这里的思路与语句窗口检索器非常相似——搜索更精细的信息片段，然后在在LLM 进行推理之前扩展上下文窗口。文档被拆分为较小的子块，这些子块和较大的父块有引用关系。</p>
-<img src="/2024/05/19/2024-05-19-LLM-RAG/parent_child.png" class="" title="Parent-child chunks retrieval">
-
-<p><img src="/Users/thechef/repositories/thechef-blog/source/_posts/2024-05-19-LLM-RAG/parent_child.png" alt="img"></p>
-<p>首先在检索过程中获取较小的块，然后如果前 k 个检索到的块中有超过 n 个块链接到同一个父节点（较大的块），我们将这个父节点替换成给 LLM 的上下文——工作原理类似于自动将一些检索到的块合并到一个更大的父块中，因此得名。请注意，搜索仅在子节点索引中执行。查看 <a href="https://link.zhihu.com/?target=https://docs.llamaindex.ai/en/stable/examples/retrievers/recursive_retriever_nodes.html">LlamaIndex 教程 递归检索器 + 节点引用</a> 以更深入地了解。</p>
-<p><strong>2.5 融合检索或混合搜索</strong></p>
-<p>这是一个很早以前的思路：结合传统的基于关键字的搜索（稀疏检索算法，如 <a href="https://link.zhihu.com/?target=https://en.wikipedia.org/wiki/Tf%E2%80%93idf">tf-idf</a> 或搜索行业标准 <a href="https://link.zhihu.com/?target=https://en.wikipedia.org/wiki/Okapi_BM25">BM25</a>）和现代语义或向量搜索，并将其结果组合在一个检索结果中。</p>
-<p>这里唯一的关键是如何组合不同相似度分数的检索结果。这个问题通常通过 <a href="https://link.zhihu.com/?target=https://plg.uwaterloo.ca/~gvcormac/cormacksigir09-rrf.pdf">Reciprocal Rank Fusion</a> 算法来解决，该算法能有效地对检索结果进行重新排序，以得到最终的输出结果。</p>
-<img src="/2024/05/19/2024-05-19-LLM-RAG/fusion.png" class="" title="Fusion retrieval">
-
-<p><img src="/Users/thechef/repositories/thechef-blog/source/_posts/2024-05-19-LLM-RAG/fusion.png" alt="img"></p>
-<p>在 LangChain 中，这种方法是通过 <a href="https://link.zhihu.com/?target=https://python.langchain.com/docs/modules/data_connection/retrievers/ensemble">Ensemble Retriever</a> 来实现的，该类将你定义的多个检索器结合起来，比如一个基于 faiss 的向量索引和一个基于 BM25 的检索器，并利用 RRF 算法进行结果的重排。</p>
-<p>在 LlamaIndex 中，这一过程也是以类似的方式 <a href="https://link.zhihu.com/?target=https://docs.llamaindex.ai/en/stable/examples/retrievers/reciprocal_rerank_fusion.html">实现</a> 的。</p>
-<p>混合或融合搜索通常能提供更优秀的检索结果，因为它结合了两种互补的搜索算法——既考虑了查询和存储文档之间的语义相似性，也考虑了关键词匹配。</p>
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/05/19/2024-05-19-LLM-RAG/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
