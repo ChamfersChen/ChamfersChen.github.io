@@ -13,8 +13,8 @@ http://example.com/tags/index.html
 http://example.com/
 http://example.com/tags/Linux/
 http://example.com/tags/Code/
-http://example.com/tags/Docker/
 http://example.com/tags/Python/
+http://example.com/tags/Docker/
 http://example.com/tags/Flask/
 http://example.com/tags/llm/
 http://example.com/tags/agent/
